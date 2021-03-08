@@ -1,0 +1,921 @@
+{
+  "title": [
+    "Resource-efficient quantum algorithm for protein folding",
+    "Towards plant resistance to viruses using protein-only RNase P",
+    "Elevated expression of lung development-related protein HSP90\u03b2 indicates poor prognosis in non-small cell lung cancer through affecting the cell cycle and apoptosis",
+    "Constitutive GLI1 expression in chondrosarcoma is regulated by major vault protein via mTOR/S6K1 signaling cascade",
+    "Improved protein structure refinement guided by deep learning based accuracy estimation",
+    "ELAVL1a is an immunocompetent protein that protects zebrafish embryos from bacterial infection",
+    "Optical tweezers-controlled hotspot for sensitive and reproducible surface-enhanced Raman spectroscopy characterization of native protein structures",
+    "The Campylobacter jejuni CiaD effector co-opts the host cell protein IQGAP1 to promote cell entry",
+    "Multiplexed labeling of cellular proteins with split fluorescent protein tags",
+    "CircRAB11FIP1 promoted autophagy flux of ovarian cancer through DSC1 and miR-129",
+    "ROS regulated reversible protein phase separation synchronizes plant flowering",
+    "Cryo-EM structure of an activated GPCR\u2013G protein complex in lipid nanodiscs",
+    "Development of a nanobody-based immunoassay for the sensitive detection of fibrinogen-like protein 1",
+    "Systematic functional analysis of Leishmania protein kinases identifies regulators of differentiation or survival",
+    "Chronic mild stress-induced protein dysregulations correlated with susceptibility and resiliency to depression or anxiety revealed by quantitative proteomics of the rat prefrontal cortex",
+    "MicroRNA-17-3p suppresses NF-\u03baB-mediated endothelial inflammation by targeting NIK and IKK\u03b2 binding protein",
+    "Control of oviductal fluid flow by the G-protein coupled receptor Adgrd1 is essential for murine embryo transit",
+    "SARS-CoV-2 nsp12 attenuates type I interferon production by inhibiting IRF3 nuclear translocation",
+    "Predicting dynamic cellular protein\u2013RNA interactions by deep learning using in vivo RNA structures",
+    "Analysis of transient membrane protein interactions by single-molecule diffusional mobility shift assay",
+    "Positive feedback of SuFu negating protein 1 on Hedgehog signaling promotes colorectal tumor growth",
+    "System-wide identification and prioritization of enzyme substrates by thermal analysis",
+    "A unique missense variant in the E1A-binding protein P400 gene is implicated in schizophrenia by whole-exome sequencing and mutant mouse models",
+    "The major cap-binding protein eIF4E regulates lipid homeostasis and diet-induced obesity",
+    "Murine neonatal ketogenesis preserves mitochondrial energetics by preventing protein hyperacetylation",
+    "The Salmonella effector protein SopD targets Rab8 to positively and negatively modulate the inflammatory response",
+    "Identification of OPN3 as associated with non-syndromic oligodontia in a Japanese population",
+    "Revealing the role of the human blood plasma proteome in obesity using genetic drivers",
+    "Spatiotemporal dissection of the cell cycle with single-cell proteogenomics",
+    "Neuronal fragile X mental retardation protein activates glial insulin receptor mediated PDF-Tri neuron developmental clearance",
+    "Auxin-mediated protein depletion for metabolic engineering in terpene-producing yeast",
+    "Decoding the protein composition of whole nucleosomes with Nuc-MS",
+    "SRPS associated protein WDR60 regulates the multipolar-to-bipolar transition of migrating neurons during cortical development",
+    "Editorial Expression of Concern: Tumor necrosis factor-inducible gene 6 protein ameliorates chronic liver damage by promoting autophagy formation in mice",
+    "Predicting protein structure from cryo-EM data",
+    "Resolving pathogenicity classification for the CDH1 c.[715G>A] (p.Gly239Arg) Variant",
+    "Target-induced clustering activates Trim-Away of pathogens and proteins",
+    "A Neanderthal OAS1 isoform protects individuals of European ancestry against COVID-19 susceptibility and severity",
+    "Rab22a-NeoF1 fusion protein promotes osteosarcoma lung metastasis through its secretion into exosomes",
+    "Prognosis of young patients with monoclonal gammopathy of undetermined significance (MGUS)",
+    "The combined effects of simulated microgravity and X-ray radiation on MC3T3-E1 cells and rat femurs",
+    "Renalase improves pressure overload-induced heart failure in rats by regulating extracellular signal-regulated protein kinase 1/2 signaling",
+    "Comprehensive characterization of protein\u2013protein interactions perturbed by disease mutations",
+    "Mass-spectrometry-based proteomic correlates of grade and stage reveal pathways and kinases associated with aggressive human cancers",
+    "High glucose induces Drp1-mediated mitochondrial fission via the Orai1 calcium channel to participate in diabetic cardiomyocyte hypertrophy",
+    "Global mapping of protein\u2013metabolite interactions in Saccharomyces cerevisiae reveals that Ser-Leu dipeptide regulates phosphoglycerate kinase activity",
+    "Mitochondrial DNA editing in mice with DddA-TALE fusion deaminases",
+    "A risk model that combines MAP, PlGF, and PAPP-A in the first trimester of pregnancy to predict hypertensive disorders of pregnancy",
+    "Self-assembly and regulation of protein cages from pre-organised coiled-coil modules",
+    "The molecular conformation of silk fibroin regulates osteogenic cell behavior by modulating the stability of the adsorbed protein-material interface"
+  ],
+  "author": [
+    [
+      "Anton Robert",
+      "Panagiotis Kl. Barkoutsos",
+      "Stefan Woerner",
+      "Ivano Tavernelli"
+    ],
+    [
+      "Anthony Gobert",
+      "Yifat Quan",
+      "Mathilde Arriv\u00e9",
+      "Florent Waltz",
+      "Nathalie Da Silva",
+      "Lucile Jomat",
+      "Mathias Cohen",
+      "Isabelle Jupin",
+      "Philippe Gieg\u00e9"
+    ],
+    [
+      "Xiang Wang",
+      "Yaru Wang",
+      "Lin Feng",
+      "Minghui Wang",
+      "Kaitai Zhang",
+      "Yousheng Mao",
+      "Ting Xiao",
+      "Shujun Cheng"
+    ],
+    [
+      "Wei Wang",
+      "Taiqiang Yan",
+      "Wei Guo",
+      "Jianfang Niu",
+      "Zhiqing Zhao",
+      "Kunkun Sun",
+      "Hongliang Zhang",
+      "Yiyang Yu",
+      "Tingting Ren"
+    ],
+    [
+      "Naozumi Hiranuma",
+      "Hahnbeom Park",
+      "Minkyung Baek",
+      "Ivan Anishchenko",
+      "Justas Dauparas",
+      "David Baker"
+    ],
+    [
+      "Shousheng Ni",
+      "Yang Zhou",
+      "Lili Song",
+      "Yan Chen",
+      "Xia Wang",
+      "Xiaoyuan Du",
+      "Shicui Zhang"
+    ],
+    [
+      "Xin Dai",
+      "Wenhao Fu",
+      "Huanyu Chi",
+      "Vince St. Dollente Mesias",
+      "Hongni Zhu",
+      "Cheuk Wai Leung",
+      "Wei Liu",
+      "Jinqing Huang"
+    ],
+    [
+      "Nicholas M. Negretti",
+      "Christopher R. Gourley",
+      "Prabhat K. Talukdar",
+      "Geremy Clair",
+      "Courtney M. Klappenbach",
+      "Cody J. Lauritsen",
+      "Joshua N. Adkins",
+      "Michael E. Konkel"
+    ],
+    [
+      "Ryo Tamura",
+      "Fangchao Jiang",
+      "Jin Xie",
+      "Daichi Kamiyama"
+    ],
+    [
+      "Zhanqin Zhang",
+      "Hongtao Zhu",
+      "Jianguo Hu"
+    ],
+    [
+      "Xiaozhen Huang",
+      "Shudong Chen",
+      "Weiping Li",
+      "Lingli Tang",
+      "Yueqin Zhang",
+      "Ning Yang",
+      "Yupan Zou",
+      "Xiawan Zhai",
+      "Nan Xiao",
+      "Wei Liu",
+      "Pilong Li",
+      "Cao Xu"
+    ],
+    [
+      "Meng Zhang",
+      "Miao Gui",
+      "Zi-Fu Wang",
+      "Christoph Gorgulla",
+      "James J. Yu",
+      "Hao Wu",
+      "Zhen-yu J. Sun",
+      "Christoph Klenk",
+      "Lisa Merklinger",
+      "Lena Morstein",
+      "Franz Hagn",
+      "Andreas Pl\u00fcckthun",
+      "Alan Brown",
+      "Mahmoud L. Nasr",
+      "Gerhard Wagner"
+    ],
+    [
+      "Wan-ting Zhang",
+      "Ting-ting Liu",
+      "Man Wu",
+      "Xiao-chen Chen",
+      "Li Han",
+      "Zhen-zhong Shi",
+      "Yu-ying Li",
+      "Xi-yang Li",
+      "Hai-xing Xu",
+      "Li-kun Gong",
+      "Pei-hu Xu",
+      "Yong Geng"
+    ],
+    [
+      "N. Baker",
+      "C. M. C. Catta-Preta",
+      "R. Neish",
+      "J. Sadlova",
+      "B. Powell",
+      "E. V. C. Alves-Ferreira",
+      "V. Geoghegan",
+      "J. B. T. Carnielli",
+      "K. Newling",
+      "C. Hughes",
+      "B. Vojtkova",
+      "J. Anand",
+      "A. Mihut",
+      "P. B. Walrad",
+      "L. G. Wilson",
+      "J. W. Pitchford",
+      "P. Volf",
+      "J. C. Mottram"
+    ],
+    [
+      "Wei Liao",
+      "Yanchen Liu",
+      "Lixiang Wang",
+      "Xiao Cai",
+      "Hong Xie",
+      "Faping Yi",
+      "Rongzhong Huang",
+      "Chui Fang",
+      "Peng Xie",
+      "Jian Zhou"
+    ],
+    [
+      "Yin Cai",
+      "Yu Zhang",
+      "Hui Chen",
+      "Xing-hui Sun",
+      "Peng Zhang",
+      "Lu Zhang",
+      "Meng-yang Liao",
+      "Fang Zhang",
+      "Zheng-yuan Xia",
+      "Ricky Ying-keung Man",
+      "Mark W. Feinberg",
+      "Susan Wai-Sum Leung"
+    ],
+    [
+      "Enrica Bianchi",
+      "Yi Sun",
+      "Alexandra Almansa-Ordonez",
+      "Michael Woods",
+      "David Goulding",
+      "Nadia Martinez-Martin",
+      "Gavin J. Wright"
+    ],
+    [
+      "Wenjing Wang",
+      "Zhuo Zhou",
+      "Xia Xiao",
+      "Zhongqin Tian",
+      "Xiaojing Dong",
+      "Conghui Wang",
+      "Li Li",
+      "Lili Ren",
+      "Xiaobo Lei",
+      "Zichun Xiang",
+      "Jianwei Wang"
+    ],
+    [
+      "Lei Sun",
+      "Kui Xu",
+      "Wenze Huang",
+      "Yucheng T. Yang",
+      "Pan Li",
+      "Lei Tang",
+      "Tuanlin Xiong",
+      "Qiangfeng Cliff Zhang"
+    ],
+    [
+      "Min Gyu Jeong",
+      "Kai Zhou",
+      "Soyeon Park",
+      "HyeongJeon An",
+      "Yonghoon Kwon",
+      "Yeonho Chang",
+      "Do-Hyeon Kim",
+      "Sung Ho Ryu"
+    ],
+    [
+      "Zhengwei Yan",
+      "Minzhang Cheng",
+      "Guohui Hu",
+      "Yao Wang",
+      "Shaopeng Zeng",
+      "Aidi Huang",
+      "Linlin Xu",
+      "Yuan Liu",
+      "Chao Shi",
+      "Libin Deng",
+      "Quqin Lu",
+      "Hai Rao",
+      "Hua Lu",
+      "Ye-Guang Chen",
+      "Shiwen Luo"
+    ],
+    [
+      "Amir Ata Saei",
+      "Christian M. Beusch",
+      "Pierre Sabatier",
+      "Juan Astorga Wells",
+      "Hassan Gharibi",
+      "Zhaowei Meng",
+      "Alexey Chernobrovkin",
+      "Sergey Rodin",
+      "Katja N\u00e4reoja",
+      "Ann-Gerd Thorsell",
+      "Tobias Karlberg",
+      "Qing Cheng",
+      "Susanna L. Lundstr\u00f6m",
+      "Massimiliano Gaetani",
+      "\u00c1kos V\u00e9gv\u00e1ri",
+      "Elias S. J. Arn\u00e9r",
+      "Herwig Sch\u00fcler",
+      "Roman A. Zubarev"
+    ],
+    [
+      "Yoshiro Morimoto",
+      "Shinji Ono",
+      "Shintaro Yoshida",
+      "Hiroyuki Mishima",
+      "Akira Kinoshita",
+      "Takeshi Tanaka",
+      "Yoshihiro Komohara",
+      "Naohiro Kurotaki",
+      "Tatsuya Kishino",
+      "Yuji Okazaki",
+      "Hiroki Ozawa",
+      "Koh-ichiro Yoshiura",
+      "Akira Imamura"
+    ],
+    [
+      "Crystal S. Conn",
+      "Haojun Yang",
+      "Harrison J. Tom",
+      "Kenji Ikeda",
+      "Juan A. Oses-Prieto",
+      "Hieu Vu",
+      "Yasuo Oguri",
+      "Supna Nair",
+      "Ryan M. Gill",
+      "Shingo Kajimura",
+      "Ralph J. DeBerardinis",
+      "Alma L. Burlingame",
+      "Davide Ruggero"
+    ],
+    [
+      "Yuichiro Arima",
+      "Yoshiko Nakagawa",
+      "Toru Takeo",
+      "Toshifumi Ishida",
+      "Toshihiro Yamada",
+      "Shinjiro Hino",
+      "Mitsuyoshi Nakao",
+      "Sanshiro Hanada",
+      "Terumasa Umemoto",
+      "Toshio Suda",
+      "Tetsushi Sakuma",
+      "Takashi Yamamoto",
+      "Takehisa Watanabe",
+      "Katsuya Nagaoka",
+      "Yasuhito Tanaka",
+      "Yumiko K. Kawamura",
+      "Kazuo Tonami",
+      "Hiroki Kurihara",
+      "Yoshifumi Sato",
+      "Kazuya Yamagata",
+      "Taishi Nakamura",
+      "Satoshi Araki",
+      "Eiichiro Yamamoto",
+      "Yasuhiro Izumiya",
+      "Kenji Sakamoto",
+      "Koichi Kaikita",
+      "Kenichi Matsushita",
+      "Koichi Nishiyama",
+      "Naomi Nakagata",
+      "Kenichi Tsujita"
+    ],
+    [
+      "Huan Lian",
+      "Kun Jiang",
+      "Ming Tong",
+      "Zhe Chen",
+      "Xiaoyu Liu",
+      "Jorge E. Gal\u00e1n",
+      "Xiang Gao"
+    ],
+    [
+      "Yumi Inagaki",
+      "Takuya Ogawa",
+      "Makoto J. Tabata",
+      "Yuki Nagata",
+      "Ryo Watanabe",
+      "Tatsuo Kawamoto",
+      "Keiji Moriyama",
+      "Toshihiro Tanaka"
+    ],
+    [
+      "Shaza B. Zaghlool",
+      "Sapna Sharma",
+      "Megan Molnar",
+      "Pamela R. Mat\u00edas-Garc\u00eda",
+      "Mohamed A. Elhadad",
+      "Melanie Waldenberger",
+      "Annette Peters",
+      "Wolfgang Rathmann",
+      "Johannes Graumann",
+      "Christian Gieger",
+      "Harald Grallert",
+      "Karsten Suhre"
+    ],
+    [
+      "Diana Mahdessian",
+      "Anthony J. Cesnik",
+      "Christian Gnann",
+      "Frida Danielsson",
+      "Lovisa Stenstr\u00f6m",
+      "Muhammad Arif",
+      "Cheng Zhang",
+      "Trang Le",
+      "Fredric Johansson",
+      "Rutger Shutten",
+      "Anna B\u00e4ckstr\u00f6m",
+      "Ulrika Axelsson",
+      "Peter Thul",
+      "Nathan H. Cho",
+      "Oana Carja",
+      "Mathias Uhl\u00e9n",
+      "Adil Mardinoglu",
+      "Charlotte Stadler",
+      "Cecilia Lindskog",
+      "Burcu Ayoglu",
+      "Manuel D. Leonetti",
+      "Fredrik Pont\u00e9n",
+      "Devin P. Sullivan",
+      "Emma Lundberg"
+    ],
+    [
+      "Dominic J. Vita",
+      "Cole J. Meier",
+      "Kendal Broadie"
+    ],
+    [
+      "Zeyu Lu",
+      "Bingyin Peng",
+      "Birgitta E. Ebert",
+      "Geoff Dumsday",
+      "Claudia E. Vickers"
+    ],
+    [
+      "Luis F. Schachner",
+      "Kevin Joo\u00df",
+      "Marc A. Morgan",
+      "Andrea Piunti",
+      "Matthew J. Meiners",
+      "Jared O. Kafader",
+      "Alexander S. Lee",
+      "Marta Iwanaszko",
+      "Marcus A. Cheek",
+      "Jonathan M. Burg",
+      "Sarah A. Howard",
+      "Michael-Christopher Keogh",
+      "Ali Shilatifard",
+      "Neil L. Kelleher"
+    ],
+    [
+      "Cui Li",
+      "Yu Zheng",
+      "Yufang Zheng",
+      "Zhiheng Xu"
+    ],
+    [
+      "Sihyung Wang",
+      "Chanbin Lee",
+      "Jieun Kim",
+      "Jeongeun Hyun",
+      "Minso Lim",
+      "Hyuk-Jin Cha",
+      "Seh-Hoon Oh",
+      "Yung Hyun Choi",
+      "Youngmi Jung"
+    ],
+    [
+      "Fernando Chirigati"
+    ],
+    [
+      "Zarina Yelskaya",
+      "Angela G. Arnold",
+      "Vanessa J. Marcell",
+      "Laura H. Tang",
+      "Erin E. Salo-Mullen",
+      "Vivian Strong",
+      "Zsofia K. Stadler",
+      "Liying Zhang"
+    ],
+    [
+      "Jingwei Zeng",
+      "Ana Filipa Santos",
+      "Aamir S. Mukadam",
+      "Mariana Osswald",
+      "David A. Jacques",
+      "Claire F. Dickson",
+      "Stephen H. McLaughlin",
+      "Christopher M. Johnson",
+      "Leo Kiss",
+      "Jakub Luptak",
+      "Nadine Renner",
+      "Marina Vaysburd",
+      "William A. McEwan",
+      "Eurico Morais-de-S\u00e1",
+      "Dean Clift",
+      "Leo C. James"
+    ],
+    [
+      "Sirui Zhou",
+      "Guillaume Butler-Laporte",
+      "Tomoko Nakanishi",
+      "David R. Morrison",
+      "Jonathan Afilalo",
+      "Marc Afilalo",
+      "Laetitia Laurent",
+      "Maik Pietzner",
+      "Nicola Kerrison",
+      "Kaiqiong Zhao",
+      "Elsa Brunet-Ratnasingham",
+      "Danielle Henry",
+      "Nofar Kimchi",
+      "Zaman Afrasiabi",
+      "Nardin Rezk",
+      "Meriem Bouab",
+      "Louis Petitjean",
+      "Charlotte Guzman",
+      "Xiaoqing Xue",
+      "Chris Tselios",
+      "Branka Vulesevic",
+      "Olumide Adeleye",
+      "Tala Abdullah",
+      "Noor Almamlouk",
+      "Yiheng Chen",
+      "Micha\u00ebl Chass\u00e9",
+      "Madeleine Durand",
+      "Clare Paterson",
+      "Johan Normark",
+      "Robert Frithiof",
+      "Mikl\u00f3s Lipcsey",
+      "Michael Hultstr\u00f6m",
+      "Celia M. T. Greenwood",
+      "Hugo Zeberg",
+      "Claudia Langenberg",
+      "Elin Thysell",
+      "Michael Pollak",
+      "Vincent Mooser",
+      "Vincenzo Forgetta",
+      "Daniel E. Kaufmann",
+      "J. Brent Richards"
+    ],
+    [
+      "Li Zhong",
+      "Dan Liao",
+      "Jingjing Li",
+      "Wenqiang Liu",
+      "Jingxuan Wang",
+      "Cuiling Zeng",
+      "Xin Wang",
+      "Zhiliang Cao",
+      "Ruhua Zhang",
+      "Miao Li",
+      "Kuntai Jiang",
+      "Yi-Xin Zeng",
+      "Jianhua Sui",
+      "Tiebang Kang"
+    ],
+    [
+      "Li Pang",
+      "S. Vincent Rajkumar",
+      "Prashant Kapoor",
+      "Francis Buadi",
+      "Angela Dispenzieri",
+      "Morie Gertz",
+      "Martha Lacy",
+      "Robert Kyle",
+      "Shaji Kumar"
+    ],
+    [
+      "Jingjing Dong",
+      "Honghui Wang",
+      "Gaozhi Li",
+      "Ke Wang",
+      "Yingjun Tan",
+      "Lijun Zhang",
+      "Yixuan Wang",
+      "Zebing Hu",
+      "Xinsheng Cao",
+      "Fei Shi",
+      "Shu Zhang"
+    ],
+    [
+      "Yuyan Wu",
+      "Chengxuan Quan",
+      "Yan Yang",
+      "Zhongshu Liang",
+      "Weihong Jiang",
+      "Xiaogang Li"
+    ],
+    [
+      "Feixiong Cheng",
+      "Junfei Zhao",
+      "Yang Wang",
+      "Weiqiang Lu",
+      "Zehui Liu",
+      "Yadi Zhou",
+      "William R. Martin",
+      "Ruisheng Wang",
+      "Jin Huang",
+      "Tong Hao",
+      "Hong Yue",
+      "Jing Ma",
+      "Yuan Hou",
+      "Jessica A. Castrillon",
+      "Jiansong Fang",
+      "Justin D. Lathia",
+      "Ruth A. Keri",
+      "Felice C. Lightstone",
+      "Elliott Marshall Antman",
+      "Raul Rabadan",
+      "David E. Hill",
+      "Charis Eng",
+      "Marc Vidal",
+      "Joseph Loscalzo"
+    ],
+    [
+      "Diana Monsivais",
+      "Yasmin M. Vasquez",
+      "Fengju Chen",
+      "Yiqun Zhang",
+      "Darshan S. Chandrashekar",
+      "John C. Faver",
+      "Ramya P. Masand",
+      "Michael E. Scheurer",
+      "Sooryanarayana Varambally",
+      "Martin M. Matzuk",
+      "Chad J. Creighton"
+    ],
+    [
+      "Qing-Rui Wu",
+      "Dan-Lin Zheng",
+      "Pei-Ming Liu",
+      "Hui Yang",
+      "Lu-An Li",
+      "Su-Juan Kuang",
+      "Ying-Yu Lai",
+      "Fang Rao",
+      "Yu-Mei Xue",
+      "Ji-Jin Lin",
+      "Shuang-Xin Liu",
+      "Chun-Bo Chen",
+      "Chun-Yu Deng"
+    ],
+    [
+      "Marcin Luzarowski",
+      "Rub\u00e9n Vicente",
+      "Andrei Kiselev",
+      "Mateusz Wagner",
+      "Dennis Schlossarek",
+      "Alexander Erban",
+      "Leonardo Perez de Souza",
+      "Dorothee Childs",
+      "Izabela Wojciechowska",
+      "Urszula Luzarowska",
+      "Micha\u0142 G\u00f3rka",
+      "Ewelina M. Soko\u0142owska",
+      "Monika Kosmacz",
+      "Juan C. Moreno",
+      "Aleksandra Brzezi\u0144ska",
+      "Bhavana Vegesna",
+      "Joachim Kopka",
+      "Alisdair R. Fernie",
+      "Lothar Willmitzer",
+      "Jennifer C. Ewald",
+      "Aleksandra Skirycz"
+    ],
+    [
+      "Hyunji Lee",
+      "Seonghyun Lee",
+      "Gayoung Baek",
+      "Annie Kim",
+      "Beum-Chang Kang",
+      "Huiyun Seo",
+      "Jin-Soo Kim"
+    ],
+    [
+      "Yiming Chen",
+      "Xue Wang",
+      "Wensheng Hu",
+      "Yijie Chen",
+      "Wenwen Ning",
+      "Sha Lu",
+      "Pei He",
+      "Liyao Li",
+      "Zhifen Zhang"
+    ],
+    [
+      "Fabio Lapenta",
+      "Jana Aupi\u010d",
+      "Marco Vezzoli",
+      "\u017diga Strm\u0161ek",
+      "Stefano Da Vela",
+      "Dmitri I. Svergun",
+      "Jos\u00e9 Mar\u00eda Carazo",
+      "Roberto Melero",
+      "Roman Jerala"
+    ],
+    [
+      "Yanlin Long",
+      "Xian Cheng",
+      "John A. Jansen",
+      "Sander G. C. Leeuwenburgh",
+      "Jing Mao",
+      "Fang Yang",
+      "Lili Chen"
+    ]
+  ],
+  "date": [
+    "17 February 2021",
+    "12 February 2021",
+    "26 February 2021",
+    "26 February 2021",
+    "26 February 2021",
+    "26 February 2021",
+    "26 February 2021",
+    "26 February 2021",
+    "26 February 2021",
+    "26 February 2021",
+    "25 February 2021",
+    "25 February 2021",
+    "25 February 2021",
+    "23 February 2021",
+    "24 February 2021",
+    "23 February 2021",
+    "23 February 2021",
+    "26 February 2021",
+    "23 February 2021",
+    "19 February 2021",
+    "19 February 2021",
+    "26 February 2021",
+    "18 February 2021",
+    "18 February 2021",
+    "18 February 2021",
+    "18 February 2021",
+    "20 February 2021",
+    "24 February 2021",
+    "24 February 2021",
+    "19 February 2021",
+    "16 February 2021",
+    "15 February 2021",
+    "12 January 2021",
+    "22 February 2021",
+    "22 February 2021",
+    "22 February 2021",
+    "25 February 2021",
+    "25 February 2021",
+    "11 February 2021",
+    "1 February 2021",
+    "15 February 2021",
+    "8 January 2021",
+    "8 February 2021",
+    "24 February 2021",
+    "26 February 2021",
+    "10 February 2021",
+    "19 February 2021",
+    "16 February 2021",
+    "11 February 2021",
+    "11 February 2021"
+  ],
+  "url": [
+    [
+      "https://www.nature.com/articles/s41534-021-00368-4"
+    ],
+    [
+      "https://www.nature.com/articles/s41467-021-21338-6"
+    ],
+    [
+      "https://www.nature.com/articles/s41392-021-00465-y"
+    ],
+    [
+      "https://www.nature.com/articles/s41418-021-00749-4"
+    ],
+    [
+      "https://www.nature.com/articles/s41467-021-21511-x"
+    ],
+    [
+      "https://www.nature.com/articles/s42003-021-01777-z"
+    ],
+    [
+      "https://www.nature.com/articles/s41467-021-21543-3"
+    ],
+    [
+      "https://www.nature.com/articles/s41467-021-21579-5"
+    ],
+    [
+      "https://www.nature.com/articles/s42003-021-01780-4"
+    ],
+    [
+      "https://www.nature.com/articles/s41419-021-03486-1"
+    ],
+    [
+      "https://www.nature.com/articles/s41589-021-00739-0"
+    ],
+    [
+      "https://www.nature.com/articles/s41594-020-00554-6"
+    ],
+    [
+      "https://www.nature.com/articles/s41401-020-00574-4"
+    ],
+    [
+      "https://www.nature.com/articles/s41467-021-21360-8"
+    ],
+    [
+      "https://www.nature.com/articles/s41398-021-01267-0"
+    ],
+    [
+      "https://www.nature.com/articles/s41401-021-00611-w"
+    ],
+    [
+      "https://www.nature.com/articles/s41467-021-21512-w"
+    ],
+    [
+      "https://www.nature.com/articles/s41423-020-00619-y"
+    ],
+    [
+      "https://www.nature.com/articles/s41422-021-00476-y"
+    ],
+    [
+      "https://www.nature.com/articles/s12276-021-00567-1"
+    ],
+    [
+      "https://www.nature.com/articles/s41419-021-03487-0"
+    ],
+    [
+      "https://www.nature.com/articles/s41467-021-21540-6"
+    ],
+    [
+      "https://www.nature.com/articles/s41398-021-01258-1"
+    ],
+    [
+      "https://www.nature.com/articles/s42255-021-00349-z"
+    ],
+    [
+      "https://www.nature.com/articles/s42255-021-00342-6"
+    ],
+    [
+      "https://www.nature.com/articles/s41564-021-00866-3"
+    ],
+    [
+      "https://www.nature.com/articles/s10038-021-00903-3"
+    ],
+    [
+      "https://www.nature.com/articles/s41467-021-21542-4"
+    ],
+    [
+      "https://www.nature.com/articles/s41586-021-03232-9"
+    ],
+    [
+      "https://www.nature.com/articles/s41467-021-21429-4"
+    ],
+    [
+      "https://www.nature.com/articles/s41467-021-21313-1"
+    ],
+    [
+      "https://www.nature.com/articles/s41592-020-01052-9"
+    ],
+    [
+      "https://www.nature.com/articles/s41419-020-03363-3"
+    ],
+    [
+      "https://www.nature.com/articles/s12276-021-00554-6"
+    ],
+    [
+      "https://www.nature.com/articles/s43588-021-00035-w"
+    ],
+    [
+      "https://www.nature.com/articles/s41431-021-00825-w"
+    ],
+    [
+      "https://www.nature.com/articles/s41594-021-00560-2"
+    ],
+    [
+      "https://www.nature.com/articles/s41591-021-01281-1"
+    ],
+    [
+      "https://www.nature.com/articles/s41392-020-00414-1"
+    ],
+    [
+      "https://www.nature.com/articles/s41408-021-00406-6"
+    ],
+    [
+      "https://www.nature.com/articles/s41526-021-00131-1"
+    ],
+    [
+      "https://www.nature.com/articles/s41440-020-00599-6"
+    ],
+    [
+      "https://www.nature.com/articles/s41588-020-00774-y"
+    ],
+    [
+      "https://www.nature.com/articles/s41388-021-01681-0"
+    ],
+    [
+      "https://www.nature.com/articles/s41419-021-03502-4"
+    ],
+    [
+      "https://www.nature.com/articles/s42003-021-01684-3"
+    ],
+    [
+      "https://www.nature.com/articles/s41467-021-21464-1"
+    ],
+    [
+      "https://www.nature.com/articles/s41371-021-00488-6"
+    ],
+    [
+      "https://www.nature.com/articles/s41467-021-21184-6"
+    ],
+    [
+      "https://www.nature.com/articles/s41413-020-00130-0"
+    ]
+  ]
+}

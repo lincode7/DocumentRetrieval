@@ -1,0 +1,77 @@
+# 多线程检索论文数据库
+
+https://www.nature.com/
+分析结果:
+# 方法：GET
+# 请求url: https://www.nature.com/search/ajax
+# 数据体:
+#     q: Protein   关键词
+#     author:      作者
+#     title:       标题
+#     date_range: 2015-2021
+#     journals:    报社
+#     volume:
+#     spage:
+#     order: relevance/date_desc 返回数据顺序，相关性和最新，默认relevant
+#     page: 1  1页50条
+{
+    'q':'Protein',
+    'date_range':'2015-2020',
+    'order':'relevance',
+    'page':1,
+}
+# 访问效果https://www.nature.com/search/ajax?q=Protein&order=relevance&date_range=2015-2021&page=1
+
+https://www.sciencemag.org/
+# 方法：POST
+# 请求url: https://w35slb9cf3.execute-api.us-west-1.amazonaws.com/prod/search
+# 数据体:
+{
+    'page':1,
+    'pagesize':50,
+    'orderby':'tfidf',
+    'rules':[
+        {
+            'field':'q','value':'123'
+        },
+        {
+            'field':'title','value':'123'
+        },
+        {
+            'field':'pubdate','value':[]
+        },
+        {
+            'field':'source',
+            'value':'\'sciencemag\' \'Science\' \'Science Advances\' \'Science Signaling\' \'Science Translational Medicine\' \'Science Immunology\' \'Science Robotics\' \'In the Pipeline\' \'Sciencehound\' \'Science Careers Blog\' \'Books, Et Al.\''
+        }
+    ]
+}
+#返回json数据
+
+http://apps.webofknowledge.com/WOS_GeneralSearch_input.do?product=WOS&SID=8E7fLauu3lh5htIOpoR&search_mode=GeneralSearch
+https://www.sciencedirect.com/
+https://pubs.acs.org/
+https://link.springer.com/
+https://www.tandfonline.com/
+https://pubs.rsc.org/
+https://onlinelibrary.wiley.com/
+
+数据存储需求
+爬取数据表,dict，包括标题，作者，出版时间，url，每个元素都是list
+filter_data = { 'info':[{同filter_data},{同filter_data},{同filter_data},````], 'url':[[1,2,3,4,5],[1,2,3,4,5],[1,2,3,4,5],````],}
+本地过滤表,dict，包括标题
+filter_data = ['title1','title2','title3',````]
+后者无需本地存储，每次访问变化
+逻辑如下
+查询并通过table3进行过滤产生table1,2
+
+
+
+# 设置：
+1.网络设置：
+    (1)请求头
+    (2)代理地址
+
+2.检索设置
+    
+QScrollArea
