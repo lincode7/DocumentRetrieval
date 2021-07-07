@@ -19,7 +19,9 @@ class json_data:
         # :return: none
         # """
         cwd = os.getcwd()
-        self.file_path = os.path.join(cwd, r'..\json', FName)
+        i = cwd.find('Filter')
+        cwd = cwd[:i]
+        self.file_path = os.path.join(cwd, r'Filter\json', FName)
         with open(self.file_path, mode='a', encoding='utf-8') as f:
             if os.path.getsize(self.file_path) == 0:
                 json.dump([], f)
@@ -417,22 +419,17 @@ class MainWindow(QMainWindow):
         # """
         super(MainWindow, self).__init__()
         # 导入ui、图标、字体
-        cwd = os.getcwd()
-        resrc_path = r'.\resources'  # 打包实际路径
-        ui_path = r'.\ui\UI_Filter_v1.ui'
-        img = r'.\img\filter.png'
-        fonts = glob.glob(r'.\font\*.ttf')
-        # loadUi(os.path.join(cwd, resrc_path, ui_path), self)
-        # self.setWindowIcon(QIcon(os.path.join(cwd, resrc_path, img)))
-        # for one in fonts:
-        #     QFontDatabase.addApplicationFont(os.path.join(cwd, resrc_path, one))
-
-        resrc_path2 = r'..\resources'  # 版本调试路径
-        loadUi(os.path.join(cwd, resrc_path2, ui_path), self)
-        self.setWindowIcon(QIcon(os.path.join(cwd, resrc_path2, img)))
+        self.cwd = os.getcwd()
+        i = self.cwd.find('Filter')
+        self.cwd = self.cwd[:i]
+        resrc_path = os.path.join(self.cwd, r'Filter\resources')  # 打包实际路径
+        ui_path = os.path.join(resrc_path, r'ui\UI_Filter_v1.ui')
+        img = os.path.join(resrc_path, r'img\filter.png')
+        fonts = glob.glob(os.path.join(resrc_path, r'font\*.ttf'))
+        loadUi(ui_path, self)
+        self.setWindowIcon(QIcon(img))
         for one in fonts:
-            QFontDatabase.addApplicationFont(os.path.join(cwd, resrc_path2, one))
-
+            QFontDatabase.addApplicationFont(os.path.join(resrc_path, one))
         self.setui()
         self.actionlink()
 
@@ -500,7 +497,6 @@ class MainWindow(QMainWindow):
         self.search_thread.start()
         # 定义搜索数据更新信号
         self.search_thread.update_date.connect(self.update_search_data)
-
 
     def actionlink(self):
         # button
