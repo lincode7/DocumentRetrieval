@@ -210,8 +210,8 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__()
         # 导入ui、图标、字体
         cwd = os.getcwd()
-        resrc_path = r'../../resources'  # 打包实际路径
-        ui_path = r'.\ui\UI_Filter_v2.ui'
+        resrc_path = r'..\..\..\resources'  # 打包实际路径
+        ui_path = r'ui\UI_Filter_v2.ui'
         img = r'.\img\filter.png'
         fonts = glob.glob(r'.\font\*.ttf')
         loadUi(os.path.join(cwd, resrc_path, ui_path), self)
