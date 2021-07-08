@@ -283,10 +283,11 @@ class MainApp(QMainWindow):
         self._threadInit()  # 初始化工作线程
 
     def _importResource(self):
-        cwd = os.getcwd()  # 路径的正确性保证
-        ui_path = os.path.join(cwd, r'.\resources\ui\UI_Filter_v3.ui')
-        ico = os.path.join(cwd, r'.\resources\img\filter.png')
-        fonts = glob.glob(os.path.join(cwd, r'.\resources\font\*.ttf'))
+        cwd = os.getcwd()
+        cwd = cwd[:cwd.find('Filter')]
+        ui_path = os.path.join(cwd, r'Filter\resources\ui\UI_Filter_v3.ui')
+        ico = os.path.join(cwd, r'Filter\resources\img\filter.png')
+        fonts = glob.glob(os.path.join(cwd, r'Filter\resources\font\*.ttf'))
         # 导入ui
         self.ui = QUiLoader().load(ui_path)
         # 导入图标
@@ -296,9 +297,9 @@ class MainApp(QMainWindow):
             QFontDatabase.addApplicationFont(one)
         # 菜单图标
         self.ui.buttonSetting.setIcon(
-            QIcon(os.path.join(cwd, r'.\resources\img\setting.png')))
+            QIcon(os.path.join(cwd, r'Filter\resources\img\setting.png')))
         self.ui.buttonFtable.setIcon(
-            QIcon(os.path.join(cwd, r'.\resources\img\table.png')))
+            QIcon(os.path.join(cwd, r'Filter\resources\img\table.png')))
 
         print('_importResource')
 

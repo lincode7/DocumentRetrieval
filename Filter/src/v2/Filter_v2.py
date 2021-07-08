@@ -210,16 +210,14 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__()
         # 导入ui、图标、字体
         cwd = os.getcwd()
-        resrc_path = r'..\..\..\resources'  # 打包实际路径
-        ui_path = r'ui\UI_Filter_v2.ui'
-        img = r'.\img\filter.png'
-        fonts = glob.glob(r'.\font\*.ttf')
-        loadUi(os.path.join(cwd, resrc_path, ui_path), self)
-        self.setWindowIcon(QIcon(os.path.join(cwd, resrc_path, img)))
-        for one in fonts:
-            QFontDatabase.addApplicationFont(os.path.join(
-                cwd, resrc_path, one))
-
+        cwd = cwd[:cwd.find('Filter')]
+        ui_path = os.path.join(cwd, r'Filter\resources\ui\UI_Filter_v2.ui')
+        img_path = os.path.join(cwd, r'Filter\resources\img\filter.png')
+        fonts_path = glob.glob(os.path.join(cwd, r'Filter\resources\font\*.ttf'))
+        loadUi(ui_path, self)
+        self.setWindowIcon(QIcon(img_path))
+        for one in fonts_path:
+            QFontDatabase.addApplicationFont(one)
 
         self.setui() # ui控件初始化准备
         self.actionlink() # 控件信号响应
@@ -228,8 +226,6 @@ class MainWindow(QMainWindow):
         """
             ui控件初始化
         """
-        self.child1 = SettingWindow() # 设置界面
-        self.child2 = FilterWindow() #  过滤表界面
 
         self.check_widget = [
             self.search_1, self.search_2, self.search_3, self.search_4,
@@ -914,49 +910,6 @@ payload = {
             self.ui_thread.update_page.emit()
         else:
             print('请求结束，共计获取{}条数据···'.format(len(data['title'])))
-
-
-class SettingWindow(QMainWindow):
-    def __init__(self):
-        super(SettingWindow, self).__init__()
-        cwd = os.getcwd()
-        # cwd = os.path.abspath(os.path.dirname(cwd) + os.path.sep + ".")  # 得到父目录
-        path = os.path.join(cwd, r'resources\ui\UI_setting.ui')
-        self.ui = loadUi(path, self)
-        path = os.path.join(cwd, r'resources\img\setting.png')
-        self.setWindowIcon(QIcon(path))
-        path = os.path.join(cwd, r'resources\font\*.ttf')
-        QFontDatabase.addApplicationFont(path)
-        self.signal_action()
-
-    def signal_action(self):
-        self.buttonset.clicked.connect(self.setsetting)
-        self.buttoncancle.clicked.connect(self.close)
-
-    def setsetting(self):
-        print(2)
-
-
-class FilterWindow(QMainWindow):
-    def __init__(self):
-        super(FilterWindow, self).__init__()
-        cwd = os.getcwd()
-        # cwd = os.path.abspath(os.path.dirname(cwd) + os.path.sep + ".")  # 得到父目录
-        path = os.path.join(cwd, r'resources\ui\UI_table.ui')
-        self.ui = loadUi(path, self)
-        path = os.path.join(cwd, r'resources\img\table.png')
-        self.setWindowIcon(QIcon(path))
-        path = os.path.join(cwd, r'resources\font\*.ttf')
-        QFontDatabase.addApplicationFont(path)
-        self.signal_action()
-
-    def signal_action(self):
-        self.buttondel.clicked.connect(self.del_data)
-        self.buttonclose.clicked.connect(self.close)
-
-    def del_data(self):
-        file = json_data('filter.json')
-        data = file.read()
 
 
 if __name__ == '__main__':

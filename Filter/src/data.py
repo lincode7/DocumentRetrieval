@@ -3,19 +3,16 @@ import os, json, requests, time, datetime
 from bs4 import BeautifulSoup
 from Filter.src.otherfuc import *
 
-class json_data:
-    # """
-    # log.json文件保存过滤表
-    # """
+class JSONIF:
+    """
+    json文件操作接口，支持创建，读取，覆盖，增加，删除
+    :param: FName: 文件名，默认log文件
+    :return: none
+    """
     def __init__(self, FName="log.json"):
-        # """
-        # 初始化文件指针
-        # :param: FName: 文件名
-        # :return: none
-        # """
         cwd = os.getcwd()
         self.file_path = os.path.join(cwd, 'json', FName)
-
+        # 文件不在就创建
         with open(self.file_path, mode='a', encoding='utf-8') as f:
             if os.path.getsize(self.file_path) == 0:
                 json.dump([], f)
@@ -60,4 +57,9 @@ class json_data:
             data.remove(item)
             self.write(data)
 
-
+class DBIF:
+    """
+    数据库操作接口
+    """
+    def __init__(self):
+        pass

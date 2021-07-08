@@ -239,7 +239,8 @@ class json_data:
         # :return: none
         # """
         cwd = os.getcwd()
-        self.file_path = os.path.join(cwd, 'json', FName)
+        cwd = cwd[:cwd.find('Filter')]
+        self.file_path = os.path.join(cwd, r'Filter\json', FName)
 
         with open(self.file_path, mode='a', encoding='utf-8') as f:
             if os.path.getsize(self.file_path) == 0:

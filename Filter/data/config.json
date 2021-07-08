@@ -1,8 +1,8 @@
 {
   "maxthread": 12,
   "path": {
-    "resources": "./resouces",
-    "data": "./data"
+    "resources": "Filter/resouces",
+    "data": "Filter/data"
   },
   "search_rsources": {
     "Nature": true,
@@ -11,5 +11,17 @@
     "Pubs": true,
     "SpLink": true,
     "Tandf": true
+  },
+  "data_frame": {
+    "title": "",
+    "author": "",
+    "publishDate": "",
+    "type": "",
+    "dio": ""
+  },
+  "log_frame": {
+    "error_type": "",
+    "error_code": "",
+    "error_description": ""
   }
 }
