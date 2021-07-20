@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-import os, json, requests, time, datetime
-from bs4 import BeautifulSoup
+import os, sqlite3
 from Filter.src.otherfuc import *
 
 class JSONIF:
@@ -26,7 +25,7 @@ class JSONIF:
         with open(self.file_path, mode='r', encoding='utf-8') as f:
             return json.load(f)
 
-    def write(self, data):
+    def write(self, data:dict):
         # """
         # 覆盖json文件
         # :param: data 覆盖数据，list或dict格式数据
@@ -35,7 +34,7 @@ class JSONIF:
         with open(self.file_path, mode='w', encoding='utf-8') as f:
             json.dump(data, f)
 
-    def pich(self, item):
+    def pich(self, item:dict):
         # """
         # 添加数据
         # :param: 添加数据项
@@ -46,7 +45,7 @@ class JSONIF:
             data.append(item)
             self.write(data)
 
-    def drop(self, item):
+    def drop(self, item:dict):
         # """
         # 删除数据
         # :param: 添加数据项

@@ -1,8 +1,8 @@
 {
   "maxthread": 12,
   "path": {
-    "resources": "Filter/resouces",
-    "data": "Filter/data"
+    "resources": "resouces",
+    "data": "data"
   },
   "search_rsources": {
     "Nature": true,

@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
 import glob
-import os
 import sys
 import threading
 import traceback
-import json
 
-from PySide2.QtCore import QThread, Signal, Slot, QDate
+from PySide2.QtCore import QThread, Signal, Slot, QDate, QResource, QFile
 from PySide2.QtGui import QFontDatabase, QIcon
 from PySide2.QtUiTools import QUiLoader
 from PySide2.QtWidgets import *
@@ -34,9 +32,9 @@ class SearchThread(QThread, somehelp):
         self.ftable = None  # 过滤表
         # 搜索源
         if _config:
-            with open(_config, mode='r',encoding='utf-8') as f:
+            with open(_config, mode='r', encoding='utf-8') as f:
                 conf = json.load(f)
-                
+
         else:
             self.source = [Nature(), Science(), Pubs(), SpLink(), Tandf()]
 
@@ -89,12 +87,10 @@ class SearchThread(QThread, somehelp):
         清理搜索规则
         '''
         rules = self.payload['rules']
-        key, a, t = ([],[],[])
+        key, a, t = ([], [], [])
         for i in rules:
             k = rules[i]['field']
             v = rules[i]['text']
-        
-
 
     def _start_search(self, sc, i):
         """
@@ -256,54 +252,32 @@ class UIThread(QThread):
 class MainApp(QMainWindow):
     def __init__(self):
         super(MainApp, self).__init__()
-        self._importResource()  # 加载资源
+        self._importResource()  # 加载界面资源,ui,img,font
         self._widgetInit()  # 隐藏部分初始不需要显示的控件
         self._signalInit()  # 信号与槽
-
-        # 程序过程中需要的数据
-        self.filter_table = json_data('filter.json')  # 初始过滤表文件
-        self.search_data = []  # 查询结果
-
-        # left
-        self.maxtextnum = 10  # 搜索栏上限，默认10个
-        self.check_add = [self.ui.check_add]  # 分类-添加一行搜索栏
-        self.search_info = [self.ui.simple_search]  # 控件数量动态变化的检索信息：1+的检索词
-        # self.static_search_info = [
-        #     self.ui.dateStart, self.ui.dateEnd, self.ui.order
-        # ]  # 控件固定的检索信息：1起始日期，1截止日期，1数据顺序
-        # right
-        self.onepagemax = 25  # 一页显示容量
-
-        # self.count = None  # 爬取条数
-        # self.countpage = None  # 数据总共可以分成多少页，count/onepagemax
-        # self.seen = None  # 查看过的数据量
-        # self.alreadypage = None  # 准备显示的页面
-        # self.onepage = None  # 当前一页能显示数量
-
+        self._workprepare()  # 工作准备初始化
         self._threadInit()  # 初始化工作线程
 
     def _importResource(self):
-        cwd = os.getcwd()
-        cwd = cwd[:cwd.find('Filter')]
-        ui_path = os.path.join(cwd, r'Filter\resources\ui\UI_Filter_v3.ui')
-        ico = os.path.join(cwd, r'Filter\resources\img\filter.png')
-        fonts = glob.glob(os.path.join(cwd, r'Filter\resources\font\*.ttf'))
-        # 导入ui
-        self.ui = QUiLoader().load(ui_path)
-        # 导入图标
-        self.ui.setWindowIcon(QIcon(ico))  # 窗口图标
-        # 导入字体
-        for one in fonts:
-            i = QFontDatabase.addApplicationFont(one)
-        # 菜单图标
-        self.ui.buttonSetting.setIcon(
-            QIcon(os.path.join(cwd, r'Filter\resources\img\setting.png')))
-        self.ui.buttonFtable.setIcon(
-            QIcon(os.path.join(cwd, r'Filter\resources\img\table.png')))
+        print(QResource.registerResource(r'.\resources\v3.rcc'))  # 注册qrc资源 -> true表示成功
+        self.ui = QUiLoader().load(QFile(":/widget/ui/UI_Filter_v3.ui"))  # 导入ui
         # 导入qss,后续可以换肤
-        with open(os.path.join(cwd, r'Filter\resources\ui\v3.qss'),'r',encoding='utf-8') as r:
+        qss = QFile(":/qss/qss/default.qss")
+        qss.open(QFile.ReadOnly)
+        with open(":/qss/default.qss", 'r', encoding='utf-8') as r:
             qss = r.read()
             self.ui.setStyleSheet(qss)
+        # 导入字体
+        fonts = glob.glob(r':\font\*.ttf')
+        for one in fonts:
+            i = QFontDatabase.addApplicationFont(one)
+        self.ui.setWindowIcon(QIcon(r":\img\filter.png"))  # 窗口图标
+        # 菜单图标
+        self.ui.buttonSetting.setIcon(
+            QIcon(":/img/setting.png"))
+        self.ui.buttonFtable.setIcon(
+            QIcon(":/img/table.png"))
+
         print('_importResource')
 
     def _widgetInit(self):
@@ -324,6 +298,27 @@ class MainApp(QMainWindow):
         self.ui.buttonNext.clicked.connect(self.ClickEvent)
         self.ui.buttonLast.clicked.connect(self.ClickEvent)
         print('_signalInit')
+
+    def _workprepare(self):
+        # 程序过程中需要的数据
+        self.filter_table = json_data('filter.json')  # 初始过滤表文件
+        self.search_data = []  # 查询结果
+
+        # left
+        self.maxtextnum = 10  # 搜索栏上限，默认10个
+        self.check_add = [self.ui.check_add]  # 分类-添加一行搜索栏
+        self.search_info = [self.ui.simple_search]  # 控件数量动态变化的检索信息：1+的检索词
+        # self.static_search_info = [
+        #     self.ui.dateStart, self.ui.dateEnd, self.ui.order
+        # ]  # 控件固定的检索信息：1起始日期，1截止日期，1数据顺序
+        # right
+        self.onepagemax = 25  # 一页显示容量
+
+        # self.count = None  # 爬取条数
+        # self.countpage = None  # 数据总共可以分成多少页，count/onepagemax
+        # self.seen = None  # 查看过的数据量
+        # self.alreadypage = None  # 准备显示的页面
+        # self.onepage = None  # 当前一页能显示数量
 
     def _threadInit(self):
         self.search_thread = SearchThread()
@@ -365,7 +360,8 @@ class MainApp(QMainWindow):
                 # 开始增加一行
                 cwd = os.getcwd()
                 cwd = cwd[:cwd.find('Filter')]
-                search_widget = QUiLoader().load(os.path.join(cwd, r'Filter\resources\ui\search_widget.ui'))  # 找到一行搜索栏的模板
+                search_widget = QUiLoader().load(
+                    os.path.join(cwd, r'Filter\resources\ui\search_widget.ui'))  # 找到一行搜索栏的模板
                 search_widget.setParent(parent)  # 父控件指向search
                 parent.layout().insertWidget(
                     index, search_widget)  # 在search布局的上一个搜索框后加入
@@ -438,7 +434,7 @@ class MainApp(QMainWindow):
 
         print(payload)
         if payload['rules']:  # 如果搜索规则不空，进行搜索
-            self.search_thread.update(_payload=payload,filter_table=self.filter_table)
+            self.search_thread.update(_payload=payload, filter_table=self.filter_table)
             self.search_thread.start()
         else:  # 取消此次搜索
             self.buttonSend.setEnabled(True)

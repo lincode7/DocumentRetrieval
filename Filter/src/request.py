@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-import os, json, requests, time, datetime
+import requests, datetime
 from bs4 import BeautifulSoup
-from Filter.src.otherfuc import *
 from Filter.src.data import *
 
 class HttpServer:

@@ -17,10 +17,10 @@ class SearchThread(QThread, somehelp):
         self.staue = True  # 线程状态，默认永动机（随主线程一直运行）
 
         self.detect = True  # 是否待机
-        self.detect_data = None # 待检查数据
+        self.detect_data = None  # 待检查数据
 
         self.Data = None  # 总数据
-        self.filter_table = filter_table # 过滤表
+        self.filter_table = filter_table  # 过滤表
         self.nature = Nature()
         self.science = Science()
 
@@ -29,7 +29,7 @@ class SearchThread(QThread, somehelp):
             请求新页面，新关键词
         """
         self.Data = {}
-        self.detect = False # 进入工作状态
+        self.detect = False  # 进入工作状态
         self.payload = payload
 
     def Nextsend(self, search_result, filter_table):
@@ -54,7 +54,7 @@ class SearchThread(QThread, somehelp):
         payl['order'] = payloads['order']
         slist.append(threading.Thread(target=self.start_search(payl)))
 
-        if payloads['others']: # advance search
+        if payloads['others']:  # advance search
             if 'keyword' in payl:
                 del payl['keyword']
             if 'author' in payl:
@@ -109,8 +109,8 @@ class SearchThread(QThread, somehelp):
 
     def run(self):
         while self.staue:
-            if self.detect: # 是否待机
-                if self.detect_data: # 如果有检查需求，就检查
+            if self.detect:  # 是否待机
+                if self.detect_data:  # 如果有检查需求，就检查
                     '''
                     self.detect_data = [
                         data_len, # 主线程还未被查看的数据量
@@ -119,14 +119,14 @@ class SearchThread(QThread, somehelp):
                         self.filter_data.read() # 更新后的过滤表
                     ]
                     '''
-                    if self.detect_data[0] - (2 * self.detect_data[1]) < 0: # 未查看数据量不足2页
+                    if self.detect_data[0] - (2 * self.detect_data[1]) < 0:  # 未查看数据量不足2页
                         self.Nextsend(search_result=self.detect_data[2],
-                                      filter_table=self.detect_data[3]) # 增加数据
+                                      filter_table=self.detect_data[3])  # 增加数据
                     self.detect_data = None
                 else:
                     print('搜索线程待机中···')
                     time.sleep(0.5)
-            elif self.payload: # 请求需求正常
+            elif self.payload:  # 请求需求正常
                 print('搜索线程工作中···')
                 try:
                     self.prepare_search(self.payload)
@@ -219,8 +219,8 @@ class MainWindow(QMainWindow):
         for one in fonts_path:
             QFontDatabase.addApplicationFont(one)
 
-        self.setui() # ui控件初始化准备
-        self.actionlink() # 控件信号响应
+        self.setui()  # ui控件初始化准备
+        self.actionlink()  # 控件信号响应
 
     def setui(self):
         """
@@ -231,21 +231,21 @@ class MainWindow(QMainWindow):
             self.search_1, self.search_2, self.search_3, self.search_4,
             self.search_5, self.search_6, self.search_7, self.search_8,
             self.search_9
-        ] # 搜索栏
-        self.check_frame_isshow = [] # 当前显示搜索栏
+        ]  # 搜索栏
+        self.check_frame_isshow = []  # 当前显示搜索栏
         self.box_logi = [
             self.logi_1, self.logi_2, self.logi_3, self.logi_4, self.logi_5,
             self.logi_6, self.logi_7, self.logi_8, self.logi_9
-        ] # and or not 选择器
+        ]  # and or not 选择器
         self.box_key = [
             self.key_1, self.key_2, self.key_3, self.key_4, self.key_5,
             self.key_6, self.key_7, self.key_8, self.key_9
-        ] # 查询词选择器
+        ]  # 查询词选择器
         self.text_search = [
             self.textsearch_1, self.textsearch_2, self.textsearch_3,
             self.textsearch_4, self.textsearch_5, self.textsearch_6,
             self.textsearch_7, self.textsearch_8, self.textsearch_9
-        ] # 查询字文本输入框
+        ]  # 查询字文本输入框
 
         # right
         self.info_frame = [
@@ -253,30 +253,30 @@ class MainWindow(QMainWindow):
             self.frame_5, self.frame_6, self.frame_7, self.frame_8,
             self.frame_9, self.frame_10, self.frame_11, self.frame_12,
             self.frame_13, self.frame_14, self.frame_15
-        ] # 结果显示框
+        ]  # 结果显示框
         self.title = [
             self.title_1, self.title_2, self.title_3, self.title_4,
             self.title_5, self.title_6, self.title_7, self.title_8,
             self.title_9, self.title_10, self.title_11, self.title_12,
             self.title_13, self.title_14, self.title_15
-        ] # 每个框的标题显示栏
+        ]  # 每个框的标题显示栏
         self.date = [
             self.date_1, self.date_2, self.date_3, self.date_4, self.date_5,
             self.date_6, self.date_7, self.date_8, self.date_9, self.date_10,
             self.date_11, self.date_12, self.date_13, self.date_14,
             self.date_15
-        ] # 每个框的出版日期显示栏
+        ]  # 每个框的出版日期显示栏
         self.author = [
             self.author_1, self.author_2, self.author_3, self.author_4,
             self.author_5, self.author_6, self.author_7, self.author_8,
             self.author_9, self.author_10, self.author_11, self.author_12,
             self.author_13, self.author_14, self.author_15
-        ] # 每个框的作者显示栏
+        ]  # 每个框的作者显示栏
         self.url = [
             self.url_1, self.url_2, self.url_3, self.url_4, self.url_5,
             self.url_6, self.url_7, self.url_8, self.url_9, self.url_10,
             self.url_11, self.url_12, self.url_13, self.url_14, self.url_15
-        ] # 每个框的url选择器
+        ]  # 每个框的url选择器
 
         self.dateStart.setDate(QDate.currentDate())  # 设置日期控件为当前时间
         self.dateEnd.setDate(QDate.currentDate())  # 设置日期控件为当前时间
@@ -304,7 +304,7 @@ class MainWindow(QMainWindow):
         self.ui_thread.show_hide.connect(self.show_hiden)
 
         self.curdate = self.dateStart.date().toString('yyyy/MM/dd')
-        self.filter_data = json_data('filter.json') # 初始过滤表文件
+        self.filter_data = json_data('filter.json')  # 初始过滤表文件
 
         # 数据格式化参数
         self.count = 0  # 爬取条数
@@ -313,8 +313,7 @@ class MainWindow(QMainWindow):
         self.alreadypage = 0  # 准备显示的页面
         self.onepagemax = 15  # 一页显示容量
         self.onepage = 0  # 当前一页能显示数量
-        self.search_data = {} # 查询结果
-
+        self.search_data = {}  # 查询结果
 
         # 搜索线程
         self.search_thread = SearchThread(filter_table=self.filter_data.read())
@@ -470,12 +469,12 @@ payload = {
 
     def dec_check(self):
         self.check_dec.setEnabled(False)
-        if len(self.check_frame_isshow)==1:
+        if len(self.check_frame_isshow) == 1:
             self.ui_thread.show_hide.emit(self.advance_w, False)
             self.buttonExpland.setText('Advance +')
         else:
             t = list(set(range(9)) & set(self.check_frame_isshow))
-            t.reverse() # 逆序
+            t.reverse()  # 逆序
             for i in t:  # 交集
                 self.check_frame_isshow.remove(i)
                 self.text_search[i].clear()

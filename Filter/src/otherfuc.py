@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-import os, json, requests, time, datetime
-from bs4 import BeautifulSoup
+import json
 
 
 def Mergelist(cls, *args):
@@ -220,3 +219,4 @@ def json_print(cls, *args):
                         indent=4,
                         separators=(',', ':'))
         print(js)
+        return js
