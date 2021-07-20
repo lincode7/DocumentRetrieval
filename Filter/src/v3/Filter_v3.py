@@ -294,13 +294,16 @@ class MainApp(QMainWindow):
         self.ui.setWindowIcon(QIcon(ico))  # 窗口图标
         # 导入字体
         for one in fonts:
-            QFontDatabase.addApplicationFont(one)
+            i = QFontDatabase.addApplicationFont(one)
         # 菜单图标
         self.ui.buttonSetting.setIcon(
             QIcon(os.path.join(cwd, r'Filter\resources\img\setting.png')))
         self.ui.buttonFtable.setIcon(
             QIcon(os.path.join(cwd, r'Filter\resources\img\table.png')))
-
+        # 导入qss,后续可以换肤
+        with open(os.path.join(cwd, r'Filter\resources\ui\v3.qss'),'r',encoding='utf-8') as r:
+            qss = r.read()
+            self.ui.setStyleSheet(qss)
         print('_importResource')
 
     def _widgetInit(self):
@@ -360,8 +363,9 @@ class MainApp(QMainWindow):
             if offset <= self.maxtextnum:  # 最大额外搜索栏数量
 
                 # 开始增加一行
-                search_widget = QUiLoader().load(
-                    r'.\resources\ui\search_widget.ui')  # 找到一行搜索栏的模板
+                cwd = os.getcwd()
+                cwd = cwd[:cwd.find('Filter')]
+                search_widget = QUiLoader().load(os.path.join(cwd, r'Filter\resources\ui\search_widget.ui'))  # 找到一行搜索栏的模板
                 search_widget.setParent(parent)  # 父控件指向search
                 parent.layout().insertWidget(
                     index, search_widget)  # 在search布局的上一个搜索框后加入

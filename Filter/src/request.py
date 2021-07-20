@@ -2,6 +2,7 @@
 import os, json, requests, time, datetime
 from bs4 import BeautifulSoup
 from Filter.src.otherfuc import *
+from Filter.src.data import *
 
 class HttpServer:
     def __init__(self):
@@ -488,7 +489,7 @@ class Pubs(HttpServer):
 # outfile.write(data)
 
 
-class SpLink(HttpServer, somehelp):
+class SpLink(HttpServer):
     url = 'https://link.springer.com/'
     search = 'https://link.springer.com/search/'
     nextpage = None
@@ -600,7 +601,7 @@ class SpLink(HttpServer, somehelp):
 # outfile.write(data)
 
 
-class Tandf(HttpServer, somehelp):
+class Tandf(HttpServer):
     url = 'https://www.tandfonline.com/'
     search = 'https://www.tandfonline.com/action/doSearch/'
     nextpage = None
