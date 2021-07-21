@@ -73,5 +73,6 @@ def _and(key, *args):
         for k in all.keys():  # 添加一条结果数据
             d = Mergedict(d, {key: all[key][index]})
 
-for i in range(2,9,1):
-    print(i)
+# for i in range(2,9,1):
+#     print(i)
+

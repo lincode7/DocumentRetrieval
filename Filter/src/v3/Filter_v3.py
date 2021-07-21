@@ -4,11 +4,10 @@ import sys
 import threading
 import traceback
 
-from PySide2.QtCore import QThread, Signal, Slot, QDate, QResource, QFile
-from PySide2.QtGui import QFontDatabase, QIcon
+from PySide2.QtCore import QThread, Signal, Slot, QDate, QResource, QFile, QIODevice
+from PySide2.QtGui import QFontDatabase, QIcon, QImage, QPixmap
 from PySide2.QtUiTools import QUiLoader
 from PySide2.QtWidgets import *
-
 from src.function import *
 
 
@@ -252,35 +251,63 @@ class UIThread(QThread):
 class MainApp(QMainWindow):
     def __init__(self):
         super(MainApp, self).__init__()
-        self._importResource()  # 加载界面资源,ui,img,font
-        self._widgetInit()  # 隐藏部分初始不需要显示的控件
-        self._signalInit()  # 信号与槽
-        self._workprepare()  # 工作准备初始化
-        self._threadInit()  # 初始化工作线程
+        # self.__setup()  # 从配置文件加载基本数据
+        self.__importResource()  # 加载界面资源,ui,img,font
+        # self.__widgetInit()  # 隐藏部分初始不需要显示的控件
+        # self.__signalInit()  # 信号与槽
+        # self.__workprepare()  # 工作准备初始化
+        # self.__threadInit()  # 初始化工作线程
 
-    def _importResource(self):
-        print(QResource.registerResource(r'.\resources\v3.rcc'))  # 注册qrc资源 -> true表示成功
-        self.ui = QUiLoader().load(QFile(":/widget/ui/UI_Filter_v3.ui"))  # 导入ui
+    def __setup(self):
+        self.info = None
+        self.ui = None
+        self.data = None
+        self.work = None
+
+    def __importResource(self):
+        # 注册rcc资源 -> true表示成功, 涵盖了ui，图片，字体，qss本地资源
+        rcc_path = os.path.join(os.getcwd(), r"resources\v3.rcc")
+        # rcc = QResource(rcc_path)
+        rcc = QResource.registerResource(rcc_path)
+        print("rcc:", rcc, '\n*****')
+        if not rcc:
+            # 出现rcc注册异常
+            pass
+        # 导入ui资源
+        mainwin = QFile(":/widget/MainWin")
+        if not mainwin.open(QIODevice.ReadOnly):
+            # 出现ui资源路径异常
+            print("Cannot open {}: {}".format("rcc:/widget/MainWin", mainwin.errorString()))
+            pass
+        self.ui = QUiLoader().load(mainwin, self)  # 导入ui
+        mainwin.close()
+        print("ui:", True, '\n*****')
         # 导入qss,后续可以换肤
-        qss = QFile(":/qss/qss/default.qss")
-        qss.open(QFile.ReadOnly)
-        with open(":/qss/default.qss", 'r', encoding='utf-8') as r:
-            qss = r.read()
-            self.ui.setStyleSheet(qss)
+        stylesheet = QFile(":/qss/stylesheet")
+        if not stylesheet.open(QIODevice.ReadOnly):
+            # 出现qss资源路径异常
+            print("Cannot open {}: {}".format("rcc:/qss/stylesheet", stylesheet.errorString()))
+            pass
+        self.ui.setStyleSheet(str(stylesheet.readAll(), 'utf-8'))
+        stylesheet.close()
+        print("stylesheet:", True, '\n*****')
         # 导入字体
-        fonts = glob.glob(r':\font\*.ttf')
+        fonts = QResource(":/font/font").children()
         for one in fonts:
-            i = QFontDatabase.addApplicationFont(one)
-        self.ui.setWindowIcon(QIcon(r":\img\filter.png"))  # 窗口图标
-        # 菜单图标
-        self.ui.buttonSetting.setIcon(
-            QIcon(":/img/setting.png"))
-        self.ui.buttonFtable.setIcon(
-            QIcon(":/img/table.png"))
+            font = QFile(f":/font/font/{one}")
+            if not font.open(QIODevice.ReadOnly):
+                # 出现font资源路径异常
+                print("Cannot open {}: {}".format(f"rcc:/font/font/{one}", font.errorString()))
+                pass
+            i = QFontDatabase.addApplicationFontFromData(font.readAll())
+            font.close()
+        print("font:", True, '\n*****')
+        self.ui.setWindowIcon(QIcon(":/img/ico"))  # 窗口图标
+        self.ui.buttonSetting.setIcon(QIcon(":/img/settingBtn"))  # 按键图标
+        self.ui.buttonFtable.setIcon(QIcon(":/img/tableBtn"))  # 按键图标
+        print('importResource success')
 
-        print('_importResource')
-
-    def _widgetInit(self):
+    def __widgetInit(self):
         self.ui.buttonresult.hide()
         self.ui.right.hide()
 
@@ -288,7 +315,7 @@ class MainApp(QMainWindow):
         self.ui.dateEnd.setDate(QDate.currentDate())  # 设置日期控件为当前时间
         print('_widgetInit')
 
-    def _signalInit(self):
+    def __signalInit(self):
         self.ui.check_add.clicked.connect(self.ClickEvent)
         self.ui.buttonSend.clicked.connect(self.ClickEvent)
         self.ui.buttonSetting.clicked.connect(self.ClickEvent)
@@ -299,7 +326,7 @@ class MainApp(QMainWindow):
         self.ui.buttonLast.clicked.connect(self.ClickEvent)
         print('_signalInit')
 
-    def _workprepare(self):
+    def __workprepare(self):
         # 程序过程中需要的数据
         self.filter_table = json_data('filter.json')  # 初始过滤表文件
         self.search_data = []  # 查询结果
@@ -320,7 +347,7 @@ class MainApp(QMainWindow):
         # self.alreadypage = None  # 准备显示的页面
         # self.onepage = None  # 当前一页能显示数量
 
-    def _threadInit(self):
+    def __threadInit(self):
         self.search_thread = SearchThread()
         self.search_thread.update_data.connect(self.get_data)
         print('_threadInit')
@@ -358,10 +385,7 @@ class MainApp(QMainWindow):
             if offset <= self.maxtextnum:  # 最大额外搜索栏数量
 
                 # 开始增加一行
-                cwd = os.getcwd()
-                cwd = cwd[:cwd.find('Filter')]
-                search_widget = QUiLoader().load(
-                    os.path.join(cwd, r'Filter\resources\ui\search_widget.ui'))  # 找到一行搜索栏的模板
+                search_widget = QUiLoader().load(QFile(":/widget/ui/search_widget.ui"))  # 找到一行搜索栏的模板
                 search_widget.setParent(parent)  # 父控件指向search
                 parent.layout().insertWidget(
                     index, search_widget)  # 在search布局的上一个搜索框后加入
@@ -447,8 +471,8 @@ class MainApp(QMainWindow):
 if __name__ == '__main__':
     try:
         app = QApplication(sys.argv)
-        gui = MainApp()
-        gui.ui.show()
+        App = MainApp()
+        App.ui.show()
         sys.exit(app.exec_())
     except Exception as e:
         print(traceback.format_exc())

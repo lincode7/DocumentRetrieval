@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
-import sys, glob, os
-from PySide2.QtCore import QFile, QIODevice
-from PySide2.QtGui import QFontDatabase, QIcon
+import sys, time
+from PySide2.QtCore import QFile, QIODevice, Slot
 from PySide2.QtUiTools import QUiLoader
-from PySide2.QtWidgets import QMainWindow, QApplication
+from PySide2.QtWidgets import QMainWindow, QApplication, QMessageBox
 
 
 class MainApp(QMainWindow):
@@ -16,46 +15,32 @@ class MainApp(QMainWindow):
 
     # 动态加载ui
     def importResource(self):
-        ui_path = r'../resources/ui/untitled.ui'
-        img = r'.\resources\img\filter.png'
-        fonts = glob.glob(r'.\resources\font\*.ttf')
+        st = time.time()
         # 导入ui
+        ui_path = r'widget.ui'
         ui_file = QFile(ui_path)
         if not ui_file.open(QIODevice.ReadOnly):
             print("Cannot open {}: {}".format(ui_path, ui_file.errorString()))
             sys.exit(-1)
-        loader = QUiLoader()
-        self.ui = loader.load(ui_file,self)
+        self.ui = QUiLoader().load(ui_file, None)
         ui_file.close()
-        if not self:
-            print(loader.errorString())
-            sys.exit(-1)
-        # 导入图标
-        self.setWindowIcon(QIcon(img))
-        # 导入字体
-        for one in fonts:
-            QFontDatabase.addApplicationFont(one)
+        end = time.time()
+        print("spend:", end - st)
 
     def hideWidget(self):
-        self.ui.search.setVisible(False)
+        self.ui.labeltest.setVisible(False)
         print('h')
 
     def actions(self):
-        self.ui.ASbutton.clicked.connect(self.ExpendAS)
+        self.ui.pushButtontest.clicked.connect(self.press)
         print('a')
 
     def datainit(self):
         print('d')
 
-    def ExpendAS(self):
-        bt = self.sender()
-        if bt == self.ui.ASbutton:
-            if bt.text() == '+':
-                bt.setText('-')
-                self.ui.search.setVisible(True)
-            elif bt.text() == '-':
-                bt.setText('+')
-                self.ui.search.setVisible(False)
+    @Slot()
+    def press(self):
+        QMessageBox.warning(self, "warning", "button is pressed")
 
 
 if __name__ == '__main__':
