@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import sys, time, threading, datetime
+import sys, time, threading, datetime, copy
 from threading import Thread
 
 
@@ -73,6 +73,27 @@ def _and(key, *args):
         for k in all.keys():  # 添加一条结果数据
             d = Mergedict(d, {key: all[key][index]})
 
+
 # for i in range(2,9,1):
 #     print(i)
 
+def del_key():
+    a = {"A": 1, "B": 2}
+    del a["A"]
+    print(a)
+
+
+def copytest():
+    class A:
+        def __init__(self):
+            self.a = 1
+            self.b = 2
+
+    a = A()
+    b = copy.deepcopy(a)
+    a.a = 2
+    a.b = 1
+    print(a.a, a.b, '\n',b.a, b.b)
+
+
+copytest()

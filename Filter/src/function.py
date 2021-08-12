@@ -229,22 +229,21 @@ class somehelp:
 
 # json保存数据模块
 class json_data:
-    # """
-    # log.json文件保存过滤表
-    # """
-    def __init__(self, FName="log.json"):
-        # """
-        # 初始化文件指针
-        # :param: FName: 文件名
-        # :return: none
-        # """
-        cwd = os.getcwd()
-        cwd = cwd[:cwd.find('Filter')]
-        self.file_path = os.path.join(cwd, r'Filter\json', FName)
+    path = None
+    """
+    初始化文件指针,不存在则创建
+    :param: FName: 文件名，默认log.json文件保存日志
+    :return: none
+    """
 
-        with open(self.file_path, mode='a', encoding='utf-8') as f:
-            if os.path.getsize(self.file_path) == 0:
-                json.dump([], f)
+    def __init__(self, FName="log.json"):
+        self.path = os.path.join(".", FName)
+        try:
+            with open(self.path, 'r', encoding='utf-8') as r:
+                r.read()
+        except:
+            with open(self.path, 'w', encoding='utf-8') as w:
+                json.dump([], w)
 
     def read(self):
         # """
@@ -252,7 +251,7 @@ class json_data:
         # :param: none
         # :return: none
         # """
-        with open(self.file_path, mode='r', encoding='utf-8') as f:
+        with open(self.path, mode='r', encoding='utf-8') as f:
             return json.load(f)
 
     def write(self, data):
@@ -261,7 +260,7 @@ class json_data:
         # :param: data 覆盖数据，list或dict格式数据
         # :return: none
         # """
-        with open(self.file_path, mode='w', encoding='utf-8') as f:
+        with open(self.path, mode='w', encoding='utf-8') as f:
             json.dump(data, f)
 
     def pich(self, item):
@@ -285,6 +284,8 @@ class json_data:
         if item in data:
             data.remove(item)
             self.write(data)
+
+
 
 
 # jf = json_data(r'nature_result.json')
@@ -324,7 +325,7 @@ class HttpServer:
         self.s.trust_env = False  # 禁用对代理和证书捆绑包的环境搜索
         self.header = {
             'User-Agent':
-            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_0) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.56 Safari/535.11',
+                'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_0) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.56 Safari/535.11',
             'Accept-Encoding': 'gzip, deflate',
             'accept': '*/*',
             'Connection': 'keep-alive',
@@ -363,6 +364,7 @@ class HttpServer:
 
 # 搜索实现
 class Nature(HttpServer, somehelp):
+    name = "Nature"
     url = 'https://www.nature.com'
     search = 'https://www.nature.com/search/ajax'
     nextpage = None
@@ -385,7 +387,7 @@ class Nature(HttpServer, somehelp):
             if 'dateSt' in self.payload and 'dateEnd' in self.payload:  # 日期范围
                 self.param['date_range'] = super().year(
                     self.payload['dateSt']) + '-' + super().year(
-                        self.payload['dateEnd'])
+                    self.payload['dateEnd'])
             if 'order' in self.payload:  # 数据顺序
                 if self.payload['order'] == 'relevance':
                     self.param['order'] = 'relevance'
@@ -425,7 +427,7 @@ class Nature(HttpServer, somehelp):
             soup = BeautifulSoup(response.text, 'lxml')
             ## 截取信息（不返回）
             if soup.find('h1', attrs={'data-test':
-                                      'no-results'}):  # 本次访问没有数据，在第一次访问无数据时触发
+                                          'no-results'}):  # 本次访问没有数据，在第一次访问无数据时触发
                 self.nextpage = None
                 return data
             self.nextpage = soup.find('li', attrs={'data-page': 'next'})
@@ -438,10 +440,10 @@ class Nature(HttpServer, somehelp):
                 log['title'] = one.find('a',
                                         attrs={
                                             'data-track-action':
-                                            'search result'
+                                                'search result'
                                         }).text.strip()
                 if {
-                        'title': log['title']
+                    'title': log['title']
                 } in self.filter_table:  # 该文章在过滤表或者结果表中就跳过
                     continue
                 log['date'] = one.find('time',
@@ -460,15 +462,15 @@ class Nature(HttpServer, somehelp):
                 if one.find(
                         'ul',
                         attrs=
-                    {
-                        'class':
-                        'clean-list extra-tight-line-height inline-list text13 text-gray-light js-list-authors-3 mt4 mr0 mb1 ml0'
-                    }) != None:
+                        {
+                            'class':
+                                'clean-list extra-tight-line-height inline-list text13 text-gray-light js-list-authors-3 mt4 mr0 mb1 ml0'
+                        }) != None:
                     log['author'] = one.find(
                         'ul',
                         attrs={
                             'class':
-                            'clean-list extra-tight-line-height inline-list text13 text-gray-light js-list-authors-3 mt4 mr0 mb1 ml0'
+                                'clean-list extra-tight-line-height inline-list text13 text-gray-light js-list-authors-3 mt4 mr0 mb1 ml0'
                         }).text.strip()
                 data = super().AddOneData(data, log)  # 在原来结果上添加
                 log = {}
@@ -490,6 +492,7 @@ class Nature(HttpServer, somehelp):
 
 
 class Science(HttpServer, somehelp):
+    name = "Science"
     url = 'https://www.sciencemag.org/'
     search = 'https://w35slb9cf3.execute-api.us-west-1.amazonaws.com/prod/search'
 
@@ -532,7 +535,7 @@ class Science(HttpServer, somehelp):
             if 'dateSt' in self.payload and 'dateEnd' in self.payload:  # 日期范围
                 self.param['rules'].append({
                     'field':
-                    'pubdate',
+                        'pubdate',
                     'value': [
                         self.payload['dateSt'].replace('/', '-'),
                         self.payload['dateEnd'].replace('/', '-')
@@ -595,6 +598,7 @@ class Science(HttpServer, somehelp):
 
 # 暂时不管
 class Science2(HttpServer, somehelp):
+    name = "Science2"
     url = 'https://www.sciencedirect.com/'
     search = 'https://www.sciencedirect.com/search/'
     api = 'https://www.sciencedirect.com/search/api/'
@@ -606,10 +610,10 @@ class Science2(HttpServer, somehelp):
         self.havenext = True
         self.filter_table = filter_table
         # get token
-        req = super().GET(url=self.search)
-        req.encoding = 'utf-8'
-        soup = BeautifulSoup(req.text, 'lxml')
-        token = 'a'
+        # req = super().GET(url=self.search)
+        # req.encoding = 'utf-8'
+        # soup = BeautifulSoup(req.text, 'lxml')
+        # token = 'a'
 
     def format_param1(self):
         if self.payload:
@@ -630,7 +634,7 @@ class Science2(HttpServer, somehelp):
             if 'date' in self.payload:  # 日期范围
                 self.param['date'] = super().year(
                     self.payload['date'][0]) + '-' + super().year(
-                        self.payload['date'][1])
+                    self.payload['date'][1])
             print(self.param)
 
     def format_param2(self, token):
@@ -675,6 +679,7 @@ class Science2(HttpServer, somehelp):
 
 
 class Pubs(HttpServer, somehelp):
+    name = "Pubs"
     url = 'https://pubs.acs.org/'
     search = 'https://pubs.acs.org/action/doSearch'
     nextpage = None
@@ -762,7 +767,7 @@ class Pubs(HttpServer, somehelp):
                     'class': 'hlFld-Title'
                 }).text.strip()
                 if {
-                        'title': log['title']
+                    'title': log['title']
                 } in self.filter_table:  # 该文章在过滤表或者结果表中就跳过
                     continue
                 log['date'] = one.find('span',
@@ -799,6 +804,7 @@ class Pubs(HttpServer, somehelp):
 
 
 class SpLink(HttpServer, somehelp):
+    name = "SpLink"
     url = 'https://link.springer.com/'
     search = 'https://link.springer.com/search/'
     nextpage = None
@@ -876,7 +882,7 @@ class SpLink(HttpServer, somehelp):
             for one in article:
                 log['title'] = one.find('a', attrs={'class': 'title'}).text
                 if {
-                        'title': log['title']
+                    'title': log['title']
                 } in self.filter_table:  # 该文章在过滤表或者结果表中就跳过
                     continue
                 log['date'] = one.find('span', attrs={
@@ -911,6 +917,7 @@ class SpLink(HttpServer, somehelp):
 
 
 class Tandf(HttpServer, somehelp):
+    name = "Tandf"
     url = 'https://www.tandfonline.com/'
     search = 'https://www.tandfonline.com/action/doSearch/'
     nextpage = None
@@ -990,7 +997,7 @@ class Tandf(HttpServer, somehelp):
             for one in article:
                 log['title'] = one.get('data-title')
                 if {
-                        'title': log['title']
+                    'title': log['title']
                 } in self.filter_table:  # 该文章在过滤表或者结果表中就跳过
                     continue
                 log['url'] = self.url + one.find('a',
@@ -1018,9 +1025,12 @@ class Tandf(HttpServer, somehelp):
         print('from {}'.format(self.url))
         super().json_print(self.param)
 
-
 # s = Tandf()
 # data = s.Search(
 #     payload={'keyword': 'protein', 'psize': 100, 'date': ['2021/01/28', '2021/03/28'], 'order': 'relevance'})
 # outfile = json_data('spLink_result.json')
 # outfile.write(data)
+
+document_source = [Nature(), Science(), Science2(), Pubs(), SpLink(), Tandf()]
+document_source_names = [i.name for i in document_source]
+

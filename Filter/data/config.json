@@ -4,6 +4,13 @@
     "resources": "resouces",
     "data": "data"
   },
+  "window": {
+    "MainWin": true,
+    "SearchWin": true,
+    "InfoWin": true,
+    "SettingWin": true,
+    "TableWin": true
+  },
   "search_rsources": {
     "Nature": true,
     "Science": true,
@@ -16,8 +23,7 @@
     "title": "",
     "author": "",
     "publishDate": "",
-    "type": "",
-    "dio": ""
+    "url": ""
   },
   "log_frame": {
     "error_type": "",

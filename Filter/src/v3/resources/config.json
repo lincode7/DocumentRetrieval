@@ -1,0 +1,34 @@
+{
+  "info": {
+    "name": "document re",
+    "url": "",
+    "description": "文献检索软件"
+  },
+  "data": {
+    "search_pagesize": 50,
+    "maxthread": 12,
+    "maxsearch": 10,
+    "onepagemax": 100,
+    "search_rsources": {
+      "Nature": true,
+      "Science": true,
+      "Science2": false,
+      "Pubs": true,
+      "SpLink": true,
+      "Tandf": true
+    }
+  },
+  "module": {
+    "result": {
+      "title": "",
+      "author": "",
+      "publishDate": "",
+      "url": ""
+    },
+    "log": {
+      "error_type": "",
+      "error_code": "",
+      "error_description": ""
+    }
+  }
+}

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import sys, traceback, time, glob, threading, random, os
-from Filter.src.function import *
+from Filter.src.v2.function import *
 from PyQt5.uic import loadUi
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtCore import pyqtSignal, QThread, Qt, QDate
@@ -93,6 +93,8 @@ class SearchThread(QThread, somehelp):
         f1 = json_data('science_result.json')
         data.append(f1.read())
         f1 = json_data('pubs_result.json')
+        data.append(f1.read())
+        f1 = json_data('spLink_result.json')
         data.append(f1.read())
         if payl['type'] == 'and':
             super()._andData(data)

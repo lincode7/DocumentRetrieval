@@ -1,4 +1,4 @@
-# 检 索 论 文 数 据 库
+# 检 索 论 文 数 据 库 #
 
 ## 程序逻辑
 1. 数据处理
@@ -10,27 +10,24 @@
 > data = [one, two, ···] (去重与整合url)
 2. ui传参
 - 一条请求体：
->   
+>
     {
-        'first': {'keyword':'', 'author':'', 'title':''}, 
-        'others': [
-            {
-                'logic':and\or\not, 
-                'key_1':value_1
-            },
-            ...,
-            {
-                 'logic':and\or\not, 
-                 'key_9':value_9
-            },
+        "rules": [
+          {
+            "logic": "",
+            "field": "",
+            "text": ""
+          }
         ],
-        'page' : 1,
-        'psize' : 200,
-        'date' : [st, end],
-        'order' : 'relevance'
-    } 
+        "dateSt": "",
+        "dateEnd": "",
+        "order": "",
+        "page": 0,
+        "psize": 100
+    }
 ---
 
+# 网站分析 #
 ## https://www.nature.com/ ##
 + 不支持and or not
 + 方法：GET
@@ -104,52 +101,45 @@
 ---
 
 ## https://link.springer.com/ ##
-    # 方法：GET
-    # 请求url: https://link.springer.com/search
-
-    https://link.springer.com/search?date-facet-mode=between&facet-start-year=2020&showAll=true&facet-end-year=2021&dc.title=5&query=1+AND+%222%22+AND+%283%29+AND+NOT+%284%29&dc.creator=6
-    test: 
++ 方法：GET
++ 请求url: https://link.springer.com/search
++ https://link.springer.com/search?date-facet-mode=between&facet-start-year=2020&showAll=true&facet-end-year=2021&dc.title=5&query=1+AND+%222%22+AND+%283%29+AND+NOT+%284%29&dc.creator=6
++ test: 
 ---
 
 ## https://www.tandfonline.com/ ##
-    # 方法：GET
-    # 请求url: https://www.tandfonline.com/action/doSearch
-
-    https://www.tandfonline.com/action/doSearch?field1=Keyword&text1=1&field2=Title&text2=2&field3=Contrib&text3=3&field4=Title&text4=4&field5=Contrib&text5=5&Ppub=&AfterYear=2008&BeforeYear=2018
-    test: 
++ 方法：GET
++ 请求url: https://www.tandfonline.com/action/doSearch
++ https://www.tandfonline.com/action/doSearch?field1=Keyword&text1=1&field2=Title&text2=2&field3=Contrib&text3=3&field4=Title&text4=4&field5=Contrib&text5=5&Ppub=&AfterYear=2008&BeforeYear=2018
++ test: 
 ---
 
 ## https://pubs.rsc.org/ ##
-    # 方法：GET
-    # 请求url: https://pubs.rsc.org/en/results/all
-
-    https://pubs.rsc.org/en/results/all?Category=All&AllText=1&ExactText=3&AtleastText=2&WithoutText=4&IncludeReference=false&SelectJournal=false&DateRange=true&Title=9&AuthorGivenName0=6&AuthorFamilyName0=5&AuthorGivenName1=8&AuthorFamilyName1=7&SelectDate=true&DateToYear=2018&DateFromYear=2008&DateFromMonth=01&DateToMonth=09&PriceCode=False&OpenAccess=false
-    test: 
++ 方法：GET
++ 请求url: https://pubs.rsc.org/en/results/all
++ https://pubs.rsc.org/en/results/all?Category=All&AllText=1&ExactText=3&AtleastText=2&WithoutText=4&IncludeReference=false&SelectJournal=false&DateRange=true&Title=9&AuthorGivenName0=6&AuthorFamilyName0=5&AuthorGivenName1=8&AuthorFamilyName1=7&SelectDate=true&DateToYear=2018&DateFromYear=2008&DateFromMonth=01&DateToMonth=09&PriceCode=False&OpenAccess=false
++ test: 
 ---
 
-## https://onlinelibrary.wiley.com/##
-    # 方法：GET
-    # 请求url: 
+## https://onlinelibrary.wiley.com/ ##
++ 方法：GET
++ 请求url: 
 ---
 
-数据存储需求
-爬取数据表,dict，包括标题，作者，出版时间，url，每个元素都是list
-filter_data = { 'info':[{同filter_data},{同filter_data},{同filter_data},````], 'url':[[1,2,3,4,5],[1,2,3,4,5],[1,2,3,4,5],````],}
-本地过滤表,dict，包括标题
-filter_data = ['title1','title2','title3',````]
-后者无需本地存储，每次访问变化
-逻辑如下
-查询并通过table3进行过滤产生table1,2
-
-
+# 数据存储需求 #
++ 
 ---
 
-# 设置：
+## https://search.crossref.org/ ##
++ 查询dio
+---
+
+# 设置 #
 1. 网络设置：
     (1) 请求头
     (2) 代理地址
 2. ui设置：
-    
+ ——————   
 
 
 

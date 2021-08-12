@@ -1,0 +1,26 @@
+{
+  "payload_raw_from_qt": {
+    "rules": [
+      {
+        "logic": "",
+        "field": "",
+        "text": ""
+      }
+    ],
+    "dateSt": "",
+    "dateEnd": "",
+    "order": "",
+    "page": 0,
+    "psize": 100
+  },
+  "payload_after_clean": {
+    "keyword": {},
+    "title": {},
+    "author": {},
+    "dateSt": "",
+    "dateEnd": "",
+    "order": "",
+    "page": 0,
+    "psize": 100
+  }
+}
