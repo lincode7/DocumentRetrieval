@@ -10,8 +10,8 @@ from PyQt5.QtWidgets import *
 from src.function import *
 
 
-# 搜索功能线程
 class SearchThread(QThread, somehelp):
+    """搜索功能线程（常驻）"""
     update_data = pyqtSignal(object)  # 搜索结束返回数据信号，与主线程进行数据交互
 
     def __init__(self, _config=None):
@@ -163,8 +163,29 @@ class SearchThread(QThread, somehelp):
             self.ftable = None
 
 
-# ui刷新线程
 class UIThread(QThread):
+    """ui刷新线程（常驻）
+        description：处理控件的隐藏、文本更改、
+
+        members：
+            - set_text : LinEdite和TextEdit的文本更改信号
+            - add_items : Combox的选项更改信号
+            - clear_text : 控件的文本清空信号
+            - update_page : 结果展示控件的页面数据刷新信号
+            - show_hide : 控件的显示、隐藏切换信号
+
+            - mode : 功能指示变量
+            - pWidget : 父控件
+            - cWidget : 控件
+            - hWidget : 被隐藏控件
+            - isshow : 显示、隐藏指标
+            - text : 更新文本
+
+        functions：
+            - update : 更新mode
+            - setText :
+            - hideshow :
+    """
     set_text = pyqtSignal(object, object)  # LineEdite或TextEdit等widget的文本设置
     add_items = pyqtSignal(object, object)  # Combox的文本设置
     clear_text = pyqtSignal(object)  # 文本内容清空
@@ -256,6 +277,7 @@ class UIThread(QThread):
 
 
 class MainApp(QMainWindow):
+    """主窗口"""
     config = None
 
     def __init__(self):
