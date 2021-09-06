@@ -1,4 +1,9 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# @File  : function.py
+# @Author: 胡煊林
+# @Date  : 2021/1/29
+# @Desc  : 一些通用数据处理辅助函数，json数据保存模块与http请求模块
 import os, json, requests, time, datetime
 from bs4 import BeautifulSoup
 

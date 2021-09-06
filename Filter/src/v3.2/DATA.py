@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @File  : data.py
+# @File  : DATA.py
 # @Author: 胡煊林
 # @Date  : 2021/8/26
 # @Desc  : 处理返回数据：合并，过滤，排序等
 
 
 import os, sqlite3
-from Filter.src.v3.otherfuc import *
+import pandas as pd
+import numpty as np
 
 
 class DataFormat:
@@ -25,6 +26,7 @@ class DataFormat:
             self.dateSt = None
             self.dateEnd = None
             self.order = None
+
 
 class JSONIF:
     path = None
