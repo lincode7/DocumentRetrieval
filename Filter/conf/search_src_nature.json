@@ -1,0 +1,38 @@
+{
+  "name": "Nature",
+  "authority": "https://www.nature.com",
+  "api": "https://www.nature.com/search/ajax",
+  "method": "GET",
+  "params": {
+    "keyword": "q",
+    "title": "title",
+    "author": "author",
+    "dateFormat": "yyyy",
+    "dateRange": "date_range"
+  },
+  "analysis": {
+    "type": "html",
+    "html": [
+      {
+        "tag": "标签名",
+        "attrs": {
+          "辅助定位属性": "属性值"
+        },
+        "find": {
+          "可以从该标签中找到的数据1": "该数据位置:text,href,src",
+          "可以从该标签中找到的数据2": "该数据位置:text,href,src"
+        }
+      },
+      {
+        "tag": "标签名",
+        "attrs": {
+          "辅助定位属性": "属性值"
+        },
+        "find": {
+          "可以从该标签中找到的数据1": "该数据位置:text,href,src",
+          "可以从该标签中找到的数据2": "该数据位置:text,href,src"
+        }
+      }
+    ]
+  }
+}

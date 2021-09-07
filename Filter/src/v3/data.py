@@ -6,7 +6,7 @@
 # @Desc  : 处理返回数据：合并，过滤，排序等
 
 
-import os, sqlite3
+import os, json, sqlite3
 import pandas as pd
 import numpy as np
 
@@ -57,7 +57,7 @@ class JSONIF:
     def write(self, data):
         # """
         # 覆盖json文件
-        # :param: data 覆盖数据，list或dict格式数据
+        # :param: conf 覆盖数据，list或dict格式数据
         # :return: none
         # """
         with open(self.path, mode='w', encoding='utf-8') as f:

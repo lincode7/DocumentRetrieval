@@ -38,7 +38,7 @@ class json_data:
     def write(self, data):
         # """
         # 覆盖json文件
-        # :param: data 覆盖数据，list或dict格式数据
+        # :param: conf 覆盖数据，list或dict格式数据
         # :return: none
         # """
         with open(self.file_path, mode='w', encoding='utf-8') as f:
@@ -255,7 +255,7 @@ class Nature(HttpServer, Mergedata):
                 article = soup.findAll('li', attrs={'class': 'mb20 pb20 cleared'})
                 log = {}
                 for one in article:
-                    log['title'] = one.find('a', attrs={'data-track-action': 'search result'}).text.strip()
+                    log['title'] = one.find('a', attrs={'conf-track-action': 'search result'}).text.strip()
                     if {'title': log['title']} in self.filter_table:
                         continue
                     alist = one.findAll('li', attrs={'itemprop': 'creator'})
@@ -266,7 +266,7 @@ class Nature(HttpServer, Mergedata):
                         log['author'].append(i)
                     log['date'] = one.find('time', attrs={'itemprop': 'datePublished'}).text.strip()
                     log['url'] = self.tolist(
-                        self.url + str(one.find('a', attrs={'data-track-action': 'search result'}).get('href')))
+                        self.url + str(one.find('a', attrs={'conf-track-action': 'search result'}).get('href')))
                     # print(log)
                     # 在原来结果上添加
                     search_result = self.EMergedict(search_result, log)
@@ -584,7 +584,7 @@ class MainWindow(QMainWindow):
                 self.seen += self.onepage
                 # 在倒数第3页的时候更新查询
             else:
-                print('data error')
+                print('conf error')
 
     def updatesetText(self, ui, text):
         if isinstance(ui, list):

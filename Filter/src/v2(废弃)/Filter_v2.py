@@ -843,7 +843,7 @@ payload = {
                 self.seen += self.onepage
                 # 在倒数第3页的时候更新查询
             else:
-                print('data error')
+                print('conf error')
 
     def updatesetText(self, ui, text):
         if isinstance(ui, list):

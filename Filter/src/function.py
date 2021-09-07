@@ -3,7 +3,7 @@
 # @File  : function.py
 # @Author: 胡煊林
 # @Date  : 2021/1/29
-# @Desc  : 一些通用数据处理辅助函数，json数据保存模块与http请求模块
+# @Desc  : 一些通用数据处理辅助函数，json数据保存模块与http请求模块, v1,v2,v3old在使用
 import os, json, requests, time, datetime
 from bs4 import BeautifulSoup
 
@@ -262,7 +262,7 @@ class json_data:
     def write(self, data):
         # """
         # 覆盖json文件
-        # :param: data 覆盖数据，list或dict格式数据
+        # :param: conf 覆盖数据，list或dict格式数据
         # :return: none
         # """
         with open(self.path, mode='w', encoding='utf-8') as f:
@@ -431,11 +431,11 @@ class Nature(HttpServer, somehelp):
             # step2:format_response
             soup = BeautifulSoup(response.text, 'lxml')
             ## 截取信息（不返回）
-            if soup.find('h1', attrs={'data-test':
+            if soup.find('h1', attrs={'conf-test':
                                           'no-results'}):  # 本次访问没有数据，在第一次访问无数据时触发
                 self.nextpage = None
                 return data
-            self.nextpage = soup.find('li', attrs={'data-page': 'next'})
+            self.nextpage = soup.find('li', attrs={'conf-page': 'next'})
             if 'disabled' in self.nextpage.attrs['class']:  # 没有下一页，在不断访问下一页时触发
                 self.nextpage = None
             self.nextpage = self.url + self.nextpage.find('a').get('href')
@@ -444,7 +444,7 @@ class Nature(HttpServer, somehelp):
             for one in article:
                 log['title'] = one.find('a',
                                         attrs={
-                                            'data-track-action':
+                                            'conf-track-action':
                                                 'search result'
                                         }).text.strip()
                 if {
@@ -461,7 +461,7 @@ class Nature(HttpServer, somehelp):
                     date_format, '%Y-%m-%d')  # '2021-03-09'
                 log['url'] = self.url + str(
                     one.find('a', attrs={
-                        'data-track-action': 'search result'
+                        'conf-track-action': 'search result'
                     }).get('href'))
                 log['author'] = ''
                 if one.find(
@@ -596,9 +596,9 @@ class Science(HttpServer, somehelp):
 
 
 # s = Science()
-# data = s.Search(payload={'keyword': 'protein', 'page': 1, 'psize': 100, 'date': ['2021/01/28', '2021/03/28'], 'order': 'relevance'})
+# conf = s.Search(payload={'keyword': 'protein', 'page': 1, 'psize': 100, 'date': ['2021/01/28', '2021/03/28'], 'order': 'relevance'})
 # outfile = json_data('science_result.json')
-# outfile.write(data)
+# outfile.write(conf)
 
 
 # 暂时不管
@@ -678,9 +678,9 @@ class Science2(HttpServer, somehelp):
 
 
 # s = Science2()
-# data = s.Search(payload={'keyword': 'protein',"psize":100})
+# conf = s.Search(payload={'keyword': 'protein',"psize":100})
 # outfile = json_data('science_result.json')
-# outfile.write(data)
+# outfile.write(conf)
 
 
 class Pubs(HttpServer, somehelp):
@@ -803,9 +803,9 @@ class Pubs(HttpServer, somehelp):
 
 
 # s = Pubs()
-# data = s.Search(payload={'keyword': 'protein', 'page': 1, 'psize': 100, 'date': ['2021/01/28', '2021/03/28'], 'order': 'relevance'})
+# conf = s.Search(payload={'keyword': 'protein', 'page': 1, 'psize': 100, 'date': ['2021/01/28', '2021/03/28'], 'order': 'relevance'})
 # outfile = json_data('pubs_result.json')
-# outfile.write(data)
+# outfile.write(conf)
 
 
 class SpLink(HttpServer, somehelp):
@@ -916,9 +916,9 @@ class SpLink(HttpServer, somehelp):
 
 
 # s = SpLink()
-# data = s.Search(payload={'keyword': 'protein', 'page': 1, 'psize': 100, 'date': ['2021/01/28', '2021/03/28'], 'order': 'relevance'})
+# conf = s.Search(payload={'keyword': 'protein', 'page': 1, 'psize': 100, 'date': ['2021/01/28', '2021/03/28'], 'order': 'relevance'})
 # outfile = json_data('spLink_result.json')
-# outfile.write(data)
+# outfile.write(conf)
 
 
 class Tandf(HttpServer, somehelp):
@@ -1000,7 +1000,7 @@ class Tandf(HttpServer, somehelp):
             article = soup.findAll('article',
                                    attrs={'class': 'searchResultItem'})
             for one in article:
-                log['title'] = one.get('data-title')
+                log['title'] = one.get('conf-title')
                 if {
                     'title': log['title']
                 } in self.filter_table:  # 该文章在过滤表或者结果表中就跳过
@@ -1031,10 +1031,10 @@ class Tandf(HttpServer, somehelp):
         super().json_print(self.param)
 
 # s = Tandf()
-# data = s.Search(
+# conf = s.Search(
 #     payload={'keyword': 'protein', 'psize': 100, 'date': ['2021/01/28', '2021/03/28'], 'order': 'relevance'})
 # outfile = json_data('spLink_result.json')
-# outfile.write(data)
+# outfile.write(conf)
 
 document_source = [Nature(), Science(), Science2(), Pubs(), SpLink(), Tandf()]
 document_source_names = [i.name for i in document_source]
