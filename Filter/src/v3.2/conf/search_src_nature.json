@@ -1,0 +1,15 @@
+{
+  "name": "Nature",
+  "authority": "https://www.nature.com",
+  "search_api": "https://www.nature.com/search/ajax",
+  "params": {
+    "q": "keyword",
+    "author": "author",
+    "author": "author",
+    "date_range": "yyyy-yyyy"
+  },
+  "analysis": {
+    "type": "H5",
+    "bs4": {}
+  }
+}

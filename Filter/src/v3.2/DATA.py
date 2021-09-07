@@ -8,7 +8,7 @@
 
 import os, sqlite3
 import pandas as pd
-import numpty as np
+import numpy as np
 
 
 class DataFormat:

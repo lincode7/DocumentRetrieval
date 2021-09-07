@@ -16,13 +16,13 @@ import traceback
 # 导入搜索子线程模块
 
 
+
 if __name__ == '__main__':
-    st = time.time()  # 程序启动时间戳
-    # try:
-    #     app = QApplication(sys.argv)
-    #     App = MainApp()
-    #     print('窗口初始化耗时：', time.time() - st)
-    #     App.show()
-    #     sys.exit(app.exec_())
-    # except Exception as e:
-    #     print(traceback.format_exc())
+    try:
+        app = QApplication(sys.argv)
+        App = MainApp()
+        print('窗口初始化耗时：', time.time() - st)
+        App.show()
+        sys.exit(app.exec_())
+    except Exception as e:
+        print(traceback.format_exc())
