@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @File  : ERROR&LOG.py
+# @File  : error.py
 # @Author: 胡煊林
 # @Date  : 2021/8/26
 # @Desc  : 处理程序运行过程中的异常，QT异常、Http请求异常等
