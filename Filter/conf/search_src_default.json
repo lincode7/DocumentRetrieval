@@ -3,7 +3,8 @@
   "authority": "源域名",
   "api": "源检索api",
   "method": "请求方式",
-  "params": {
+  "params_type": "参数类型，params，json，data等",
+  "payload": {
     "keyword": "检索关键字对应参数名",
     "title": "检索标题对应参数名",
     "author": "检索作者对应参数名",
