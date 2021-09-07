@@ -32,12 +32,12 @@ class HttpServer:
     主要接口是 update_session 和 request_analysis
 
     基本使用：
-      >>nature = HttpServer(nature_conf)
-      >>nature.request_analysis(keyword="", title="", author="", dateSt="", dateEnd="")
+      >>> nature = HttpServer(nature_conf)
+      >>> nature.request_analysis(keyword="", title="", author="", dateSt="", dateEnd="")
     """
     session = None
-    __myheaders = None
-    __myproxy = None
+    __myheaders = {}
+    __myproxy = {}
     __config = None
 
     def __init__(self, config=None):
@@ -64,11 +64,11 @@ class HttpServer:
     def request_analysis(self, **kwargs):
         ''' 发出请求与分析请求响应的接口
 
-        :param kwargs: 请求参数字典,传入格式一致,同过config的params字段格式化
+        :param kwargs: 请求参数字典,传入格式一致,通过config的params字段格式化
         :return:
         '''
         # send request
-        print(type(kwargs))
+        print(type(kwargs), kwargs)
         # analysis response
         pass
 
@@ -105,8 +105,10 @@ class HttpServer:
 
     def __randomproxy(self):
         '''随机生成一个代理ip，工具执行过程中，除了一开始的几页的预读，连续请求间隔基本和人的实际操作一致，暂时用不到'''
-        # return random.choice()
-        return random.choice([])
+        # return random.choice([])
+        pass
 
+nature_conf = None
 
-
+nature = HttpServer(nature_conf)
+nature.request_analysis(keyword="1", title="2", author="3", dateSt="1111/12/11", dateEnd="2222/01/09")
