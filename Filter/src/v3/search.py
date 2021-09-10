@@ -104,19 +104,19 @@ class HttpServer:
         :param pyload: 外部传入统一参数
         :return 针对当前源格式化的请求参数
         '''
+
+        # 搜索源参数配置正常
         if self.__config or self.__config["params"]:
             params = {
-                self.__config["keyword"]: payload["keyword"],
-                self.__config["title"]: payload["title"],
-                self.__config["author"]: payload["author"]
+                self.__config["payload"]["keyword"]: payload["keyword"],
+                self.__config["payload"]["title"]: payload["title"],
+                self.__config["payload"]["author"]: payload["author"],
+                self.__config["payload"]["dateSt"]: payload["dateSt"],
+                self.__config["payload"]["dateEnd"]: payload["dateEnd"],
+                self.__config["payload"]["dateRange"]: payload["dateRange"]
             }
-            if self.__config["dateRange"]:
-                Yst, Mst, Dst = payload["dateSt"].split('/')
-                Yend, Mend, Dend = payload["dateEnd"].split('/')
-
         else:
             print("json配置缺少请求参数格式转换逻辑")
-        pass
 
     def request_analysis(self, **kwargs):
         ''' 发出请求与分析请求响应的接口
@@ -128,10 +128,13 @@ class HttpServer:
         #: (1) 格式化请求参数
         payload = self.__format_params(kwargs)
         #: (2) 发送
-        request = requests.Request(method=self.__config["method"],
-                                   url=self.__config["url"],
-                                   headers=self.__myheaders,
-                                   self.__config["params_type"]=payload[])
+        request_prepare = None
+        if self.__config["method"]=="GET":
+
+            request_prepare = requests.Request(method=self.__config["method"],
+                                                url=self.__config["url"],
+                                                headers=self.__myheaders,
+                                                params=payload)
         #: 2 分析数据
         #: (1) 判断是否空
         #: (2) 提取数据

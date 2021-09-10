@@ -37,7 +37,7 @@
     'q' : str,    关键词
     'author' : str    作者
     'title' : str     标题
-    'date_range': 'y-y',   时间/null
+    'date_range': 'yyyy-yyyy',   时间/null
     'order' : 'relevance', /date_desc /date_asc 返回数据顺序，相关性和最新和最老，默认relevant
     'page' : 1,
 ```

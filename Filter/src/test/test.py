@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import json
+import re
 import sys, time, threading, datetime, copy
 from threading import Thread
 
@@ -95,5 +97,62 @@ def copytest():
     a.b = 1
     print(a.a, a.b, '\n',b.a, b.b)
 
+def formatdate(date, fmt):
+    return datetime.datetime.strptime(date, "")
 
-copytest()
+def paramsformat_test(payload: dict, _payload: dict) -> dict:
+    def f(obj, fmt) -> object:
+        if obj and fmt:
+            rg = '(?:\[)?(.*)(?:\])?'
+            reg = '(?:\[)?((\w+):(.*)?)+(?:\])?'
+            print(re.match(rg, fmt).groups())
+            if isinstance(obj, list):
+                pass
+            elif isinstance(obj, str):
+                pass
+        return None
+
+    params = {}
+    for key in _payload.keys():
+        # 从字符串中截取出转化的键与值的格式化模型
+        reg = '(\w+):(.*)?'
+        k, fmt = re.match(reg, _payload[key]).groups()
+        # print(k, fmt)
+        params[k] = f(payload[key], fmt) or payload[key]
+        # return params
+    pass
+
+
+# 统一参数
+payload = {
+    "keyword": "protein",
+    "title": "123",
+    "author": "me",
+    "date": ["2021/07/19","2021/09/10"]
+  }
+# 参数格式化json逻辑
+_payload1 = {
+    "keyword": "q:",
+    "title": "title:",
+    "author": "author:",
+    "date": "date_range:yyyy-yyyy"
+  }
+_payload2 = {
+    "keyword": "qs:",
+    "title": "title:",
+    "author": "authors:",
+    "date": "affiliations:yyyy-yyyy"
+  }
+_payload3 = {
+    "keyword": "rules:[field:q,value:]",
+    "title": "rules:[field:title,value:]",
+    "author": "rules:[field:author_surnames,value:]",
+    "date": "rules:[field:pubdate,value:[yyyy-mm-dd,yyyy-mm-dd]]"
+  }
+
+paramsformat_test(payload, _payload1)
+paramsformat_test(payload, _payload2)
+paramsformat_test(payload, _payload3)
+
+
+
