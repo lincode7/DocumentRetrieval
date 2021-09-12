@@ -14,10 +14,12 @@
   "method": "请求方式",
   "params_type": "参数类型，params，data等",
   "payload": {
-    "keyword": "key:",
-    "title": "key:",
-    "author": "key:",
-    "date": "key:fmt-fmt or key:[fmt,fmt] or key:[key1:fmt,key2:fmt] or [key1:fmt,key2:fmt]"
+    "datefmt": "yyyy-mm-dd,yyyy/mm/dd,yyyy/mm,yyyy等",
+    "keyword": "key:@value  |   key:[key:@value]",
+    "title": "key:@value    |   key:[key:@value]",
+    "author": "key:@value   |   key:[key:@value]",
+    "date": "key:@value     |   key:[key:@value]",
+    "others": "key1:value1,key2:value2···"
   },
   "analysis": {
     "type": "响应类型 html 或 json",
