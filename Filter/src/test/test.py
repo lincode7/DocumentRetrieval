@@ -221,7 +221,6 @@ class str_dict:
         :return: 从字符串翻译的对象
 
         - 基本操作
-        >>> str_dict.complex_str_to_dict()
         '''
 
         L = re.findall(cls.reg2, s)
