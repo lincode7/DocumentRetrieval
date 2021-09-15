@@ -1,4 +1,4 @@
-# Easy easy search
+
 # 综合文献搜索工具
 - 通过Requests向不同文献库网站构建session会话，搜索文献（关键字，作者，标题，时间范围，返回顺序）；
 - 通过PySide2绘制ui界面；
