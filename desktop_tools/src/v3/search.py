@@ -3,7 +3,7 @@
 # @File  : search.py
 # @Author: 胡煊林
 # @Date  : 2021/8/26
-# @Desc  : 向各个文献数据库请求的模块
+# @Desc  : 处理后台http请求，向各个文献数据库发起请求
 
 import random, datetime
 from threading import Thread
