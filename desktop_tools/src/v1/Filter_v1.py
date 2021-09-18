@@ -19,9 +19,9 @@ class json_data:
         # :return: none
         # """
         cwd = os.getcwd()
-        i = cwd.find('Filter')
+        i = cwd.find('desktop_tools')
         cwd = cwd[:i]
-        self.file_path = os.path.join(cwd, r'Filter\json', FName)
+        self.file_path = os.path.join(cwd, r'desktop_tools\json', FName)
         with open(self.file_path, mode='a', encoding='utf-8') as f:
             if os.path.getsize(self.file_path) == 0:
                 json.dump([], f)
@@ -420,9 +420,9 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__()
         # 导入ui、图标、字体
         self.cwd = os.getcwd()
-        i = self.cwd.find('Filter')
+        i = self.cwd.find('desktop_tools')
         self.cwd = self.cwd[:i]
-        resrc_path = os.path.join(self.cwd, r'Filter\resources')  # 打包实际路径
+        resrc_path = os.path.join(self.cwd, r'desktop_tools\resources')  # 打包实际路径
         ui_path = os.path.join(resrc_path, r'ui\UI_Filter_v1.ui')
         img = os.path.join(resrc_path, r'img\filter.png')
         fonts = glob.glob(os.path.join(resrc_path, r'font\*.ttf'))

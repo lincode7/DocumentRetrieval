@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import sys, traceback, time, glob, threading, random, os
-from Filter.src.v2.function import *
+from desktop_tools.src.v2.function import *
 from PyQt5.uic import loadUi
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtCore import pyqtSignal, QThread, Qt, QDate
@@ -212,10 +212,10 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__()
         # 导入ui、图标、字体
         cwd = os.getcwd()
-        cwd = cwd[:cwd.find('Filter')]
-        ui_path = os.path.join(cwd, r'Filter\resources\ui\UI_Filter_v2.ui')
-        img_path = os.path.join(cwd, r'Filter\resources\img\filter.png')
-        fonts_path = glob.glob(os.path.join(cwd, r'Filter\resources\font\*.ttf'))
+        cwd = cwd[:cwd.find('desktop_tools')]
+        ui_path = os.path.join(cwd, r'desktop_tools\resources\ui\UI_Filter_v2.ui')
+        img_path = os.path.join(cwd, r'desktop_tools\resources\img\filter.png')
+        fonts_path = glob.glob(os.path.join(cwd, r'desktop_tools\resources\font\*.ttf'))
         loadUi(ui_path, self)
         self.setWindowIcon(QIcon(img_path))
         for one in fonts_path:
