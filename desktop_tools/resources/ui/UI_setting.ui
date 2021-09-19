@@ -136,16 +136,16 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <property name="leftMargin">
-     <number>20</number>
+     <number>5</number>
     </property>
     <property name="topMargin">
-     <number>20</number>
+     <number>5</number>
     </property>
     <property name="rightMargin">
-     <number>20</number>
+     <number>5</number>
     </property>
     <property name="bottomMargin">
-     <number>20</number>
+     <number>5</number>
     </property>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
@@ -165,8 +165,8 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>758</width>
-           <height>512</height>
+           <width>788</width>
+           <height>542</height>
           </rect>
          </property>
          <property name="grey" stdset="0">

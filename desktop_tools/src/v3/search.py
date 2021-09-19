@@ -8,14 +8,14 @@
 import random, datetime
 from threading import Thread
 
-from src.v3.data import *
+from v3.data import *
 
 import requests
 from bs4 import BeautifulSoup
 from PyQt5.QtCore import pyqtSignal, QThread
 
 
-class searchThread(QThread):
+class SearchThread(QThread):
     """搜索子线程
 
     实现ui输入参数点击搜索后的搜索事项，把搜索下分到每一个文献数据库源的会话中，

@@ -235,6 +235,8 @@ class str_dict:
 
         return obj or None
 
-
+    @classmethod
+    def callname(cls, name, desc):
+        pass
 
 

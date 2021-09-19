@@ -5,6 +5,16 @@
 - 本地存储文献过滤表，对搜索结果进行合并（同一文章合并url来源）、过滤，再进行显示；
 - 不涉及服务器，所有网络请求都是程序模拟http请求向文献库进行搜索，本地只会产生添加到过滤表的历史记录。
 
+## 开发环境
+- Windows 10 1909
+- PyCharm 2021.2.2 （Community Edition）
+- Python 3.7
+- 第三方库：
+    1. requests：HTTP库，用于网络访问；
+    2. beautifulsoup：网页解释库，提供lxml的支持；
+    3. PyQt5：Python下的Qt库
+    4. designer：绘制ui界面，利用qss美化
+
 ---
 * v1：2021-2月期间开发，能对nature进行查询并过滤本地论文标题列表，初步实现目的功能
 ![image](https://github.com/lincode7/search-for-essay-with-local-filter/blob/main/Filter/src/v1/v1.gif)

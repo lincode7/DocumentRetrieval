@@ -242,7 +242,7 @@ class json_data:
     """
 
     def __init__(self, FName="log.json"):
-        self.path = os.path.join(".", FName)
+        self.path = os.path.join("..", FName)
         try:
             with open(self.path, 'r', encoding='utf-8') as r:
                 r.read()

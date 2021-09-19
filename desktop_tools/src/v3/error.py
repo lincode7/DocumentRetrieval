@@ -7,8 +7,31 @@
 
 import json, os, time
 
-def record_log(log:dict):
-    pass
+def coast_time(func):
+    '''利用修饰器实现测试闭包，测试函数运行时间
+
+    :param func: 函数名
+    :return: 函数运行结果
+    '''
+    def fun(*args, **kwargs):
+        t = time.perf_counter()
+        result = func(*args, **kwargs)
+        print(f'func {func.__name__} coast time:{time.perf_counter() - t:.8f} s')
+        return result
+    return fun
+
+def record_log(func):
+    '''记录函数异常日志
+
+    :param log: 异常信息字典{type:"",code:"",desc:"",position:""}
+    :return:
+    '''
+    def fun(*args, **kwargs):
+        return func(*args, **kwargs)
+    try:
+        return fun
+    except:
+        print(f"error occur: {func.__name__}")
 
 class myException(Exception):
     '''
@@ -28,3 +51,4 @@ class myException(Exception):
     '''
     def __init__(self):
         pass
+
