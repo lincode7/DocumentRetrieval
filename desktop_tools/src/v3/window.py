@@ -207,8 +207,8 @@ class MainApp(QMainWindow):
         self.buttonNext.clicked.connect(self.ClickEvent)
         self.buttonLast.clicked.connect(self.ClickEvent)
         # 自定义信号
-        self.search_thread.update_data.connect(self.get_data)  # 搜索数据返回信号
-        self.ui_thread.update_page.connect(self._updatePage)  # 刷新页面信号
+        # self.search_thread.update_data.connect(self.get_data)  # 搜索数据返回信号
+        # self.ui_thread.update_page.connect(self._updatePage)  # 刷新页面信号
         # self.ui_thread.set_text.connect()  # 设置控件文本信号
         # self.ui_thread.add_items.connect()  # 设置控件文本
         # self.ui_thread.clear_text.connect()  # 情况控件文本信号
@@ -235,8 +235,8 @@ class MainApp(QMainWindow):
         print('workPrepare success', '\n------')
 
     def __threadInit(self):
-        self.search_thread = SearchThread(self.config["conf"]["search_rsources"])
-        self.ui_thread = UIThread()
+        # self.search_thread = SearchThread(self.config["conf"]["search_rsources"])
+        # self.ui_thread = UIThread()
         print('threadInit success', '\n------')
 
     @pyqtSlot()  # @pyqtSlot()()是一个装饰器，标志着这个函数是一个slot(槽)
@@ -341,41 +341,45 @@ class MainApp(QMainWindow):
         payload['page'] = 0
         payload['pagesize'] = self.config["conf"]["search_pagesize"]
 
-        if payload['rules']:  # 如果搜索规则不空，进行搜索
-            self.search_thread.update(_payload=payload, filter_table=self.filter_table.read())
-            self.search_thread.start()
-        else:  # 取消此次搜索
-            self.buttonSend.setEnabled(True)
+        # if payload['rules']:  # 如果搜索规则不空，进行搜索
+        #     self.search_thread.update(_payload=payload, filter_table=self.filter_table.read())
+        #     self.search_thread.start()
+        # else:  # 取消此次搜索
+        #     self.buttonSend.setEnabled(True)
+
+        print(payload)
+        self.buttonSend.setEnabled(True)
 
     def _updatePage(self):
-        data = self.search_data
-
-        len = len(data)  # 当前搜索结果列表长度
-        onepage = len - self.data_offset  # 列表待查看长度
-        onepage = min(onepage, self.work["conf"]["onepagemax"])  # 当前页面合理显示数据长度
-        if self.onepage > 0:
-            parentWidget = self.info
-
-            _data = []  # 可修改
-            _data.append(data['title'][self.data_offset:self.data_offset + onepage])
-            _data.append(data['date'][self.data_offset:self.data_offset + onepage])
-            _data.append(data['author'][self.data_offset:self.data_offset + onepage])
-            _data.append(data['url'][self.data_offset:self.data_offset + onepage])
-
-            if _data[0]:
-                self.ui_thread.show_hide.emit(self.next, True)
-                # 移动到页面顶部
-                self.right.verticalScrollBar().setValue(0)
-                self.ui_thread.update(parentWidget=parentWidget, data=_data)
-                self.ui_thread.start()
-                # 向搜索线程发送检查数据量请求
-                self.ui_thread.join()
-                self.search_thread.update(dect_data={})
-                print(f'现在显示：{self.data_offset}到{self.data_offset + onepage}条，共显示{len}条')
-                self.data_offset += onepage
-                # 在倒数第3页的时候更新查询
-            else:
-                print('conf error')
+        pass
+        # data = self.search_data
+        #
+        # len = len(data)  # 当前搜索结果列表长度
+        # onepage = len - self.data_offset  # 列表待查看长度
+        # onepage = min(onepage, self.work["conf"]["onepagemax"])  # 当前页面合理显示数据长度
+        # if self.onepage > 0:
+        #     parentWidget = self.info
+        #
+        #     _data = []  # 可修改
+        #     _data.append(data['title'][self.data_offset:self.data_offset + onepage])
+        #     _data.append(data['date'][self.data_offset:self.data_offset + onepage])
+        #     _data.append(data['author'][self.data_offset:self.data_offset + onepage])
+        #     _data.append(data['url'][self.data_offset:self.data_offset + onepage])
+        #
+        #     if _data[0]:
+        #         self.ui_thread.show_hide.emit(self.next, True)
+        #         # 移动到页面顶部
+        #         self.right.verticalScrollBar().setValue(0)
+        #         self.ui_thread.update(parentWidget=parentWidget, data=_data)
+        #         self.ui_thread.start()
+        #         # 向搜索线程发送检查数据量请求
+        #         self.ui_thread.join()
+        #         self.search_thread.update(dect_data={})
+        #         print(f'现在显示：{self.data_offset}到{self.data_offset + onepage}条，共显示{len}条')
+        #         self.data_offset += onepage
+        #         # 在倒数第3页的时候更新查询
+        #     else:
+        #         print('conf error')
 
     @pyqtSlot()
     def get_data(self, data:list):

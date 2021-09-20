@@ -16,19 +16,11 @@ from v3.data import *
 from v3.error import *
 
 
-@coast_time
-def appstart():
-    App = MainApp()
-    App.show()
-
-
-
 if __name__ == '__main__':
     try:
         app = QApplication(sys.argv)
-        # App = MainApp()
-        # App.show()
-        appstart()
+        App = MainApp()
+        App.show()
         sys.exit(app.exec_())
     except Exception as e:
         print(traceback.format_exc())

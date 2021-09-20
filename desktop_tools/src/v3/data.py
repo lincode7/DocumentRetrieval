@@ -7,8 +7,6 @@
 
 
 import os, json, sqlite3
-import pandas as pd
-import numpy as np
 
 
 class DataFormat:
@@ -29,12 +27,12 @@ class DataFormat:
 
 
 class JSONIF:
-    path = None
-    """
-    初始化文件指针,不存在则创建
+    """初始化文件指针,不存在则创建
+
     :param: FName: 文件名，默认log.json文件保存日志
     :return: none
     """
+    path = None
 
     def __init__(self, FName="log.json"):
         self.path = os.path.join(".", FName)
@@ -46,69 +44,57 @@ class JSONIF:
                 json.dump([], w)
 
     def read(self):
-        # """
-        # 读取json文件
-        # :param: none
-        # :return: none
-        # """
+        """读取json文件
+
+        :param: none
+        :return: none
+        """
         with open(self.path, mode='r', encoding='utf-8') as f:
             return json.load(f)
 
     def write(self, data):
-        # """
-        # 覆盖json文件
-        # :param: conf 覆盖数据，list或dict格式数据
-        # :return: none
-        # """
+        """覆盖写json文件
+
+        :param: conf 覆盖数据，list或dict格式数据
+        :return: none
+        """
         with open(self.path, mode='w', encoding='utf-8') as f:
             json.dump(data, f)
 
+    def add(self,item):
+        """直接添加数据，不判断重复
+
+        :param data:
+        :return:
+        """
+        data = self.read()
+        if isinstance(data,dict):
+            self.write([data,item])
+        else:
+            data.append(item)
+            self.write(data)
+
     def pich(self, item):
-        # """
-        # 添加数据
-        # :param: 添加数据项
-        # :return: none
-        # """
+        """去重添加数据
+
+        :param: 添加数据项
+        :return: none
+        """
         data = self.read()
         if item not in data:
             data.append(item)
             self.write(data)
 
     def drop(self, item):
-        # """
-        # 删除数据
-        # :param: 添加数据项
-        # :return: none
-        # """
+        """删除数据
+
+        :param: 添加数据项
+        :return: none
+        """
         data = self.read()
         if item in data:
             data.remove(item)
             self.write(data)
-
-
-# jf = JSONIF(r'nature_result.json')
-# n = jf.read()
-# jf = JSONIF(r'pubs_result.json')
-# p = jf.read()
-# jf = JSONIF(r'science_result.json')
-# s = jf.read()
-
-# t = time.time()
-# d = _finalData(n,p,s)
-# t1 = time.time()
-# print(t1-t)
-
-# jf = JSONIF(r'final.json')
-# jf.write(d)
-# d = jf.read()
-
-# t = time.time()
-# d = sortData(d, 1)
-# t1 = time.time()
-# print(t1-t)
-
-# jf = JSONIF(r'sortfinal.json')
-# jf.write(d)
 
 
 class DBIF:
