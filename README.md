@@ -10,7 +10,7 @@
 - PyCharm 2021.2.2 （Community Edition）
 - Python 3.7
 - 第三方库：
-    1. requests：HTTP库，用于网络访问；
+    1. requests：HTTP库，用于本地并发http请求；
     2. beautifulsoup：网页解释库，提供lxml的支持；
     3. PyQt5：Python下的Qt库
     4. designer：绘制ui界面，利用qss美化
@@ -19,19 +19,21 @@
 * v1：2021-2月期间开发，能对nature进行查询并过滤本地论文标题列表，初步实现目的功能
 ![image](https://github.com/lincode7/search-for-essay-with-local-filter/blob/main/Filter/src/v1/v1.gif)
 
-* v2：2021-2月到3月期间，开发库从pyqt5转pyside2，ui修改，增加其他搜索源（因QT部分代码冗余，中断多源结果的合并编写，转向v3开发）
+* v2：2021-2月到3月期间，开发库从pyqt5转pyside2，ui修改，增加其他搜索源，合并数据去重效果不理想
 
-* v3：2021-3月-4月期间，ui大改，代码优化，因课程项目暂停，预计7月重新进行
-    - 8.12
-        - 用bootstrap准备前端页面
+* v3：2021-7月-，ui大改，代码优化
     - 8.26
-        - 代码模块化：
-            - mian : 程序入口，初始化
-            - UI : 主界面模块，UI刷新子线程模块
-            - SEARCH : Http接口模块，Http会话子线程模块
-            - DATA : 数据合并子线程
-            - ERROR : 异常处理与日志模块
-            - OTHERFUNCTION : 通用辅助函数模块
+      - 模式优化
+        - 动态添加搜索源，通过填写表格，生成http响应分析逻辑，获取搜索结果并加入结果列表
+        - 记录异常日志（时间，异常位置，异常信息）
+        - 搜索结果时间排序
         - 
+      - 代码模块化：
+        - mian : 程序入口，初始化
+        - window : 主界面模块，UI刷新子线程模块
+        - search : Http接口模块，Http会话子线程模块
+        - data : 数据合并子线程
+        - error : 异常处理与日志模块
+        - helpfunc : 通用辅助函数模块
 
 ---

@@ -1,9 +1,10 @@
 {
   "name": "源名称",
+  "subject": "源默认学科，可多值",
   "authority": "源域名 url",
   "api": "源检索api url",
   "method": "请求方式",
-  "params_type": "参数类型，params，data等",
+  "params_type": "参数类型，params，data，json等",
   "payload": {
     "keyword": "检索关键字对应参数名",
     "title": "检索标题对应参数名",
