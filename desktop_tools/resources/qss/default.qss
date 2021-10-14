@@ -1,0 +1,211 @@
+*{
+	font: 20px "Consolas";
+	border-radius: 3px;
+}
+
+QMainWindown{
+	margin:0px;
+	padding:0px;
+}
+
+QPushButton
+{
+	font: 20px "包图小白体";
+	padding: 5px;
+    border-radius: 8px;
+}QPushButton:hover
+{
+	color: black;
+	background-color: rgb(202, 202, 202);
+}QPushButton:pressed
+{
+    padding-bottom:2px;
+}
+
+QLabel {
+	font: italic "Comic Sans MS";
+}
+
+QLineEdit{
+	background:transparent;
+	border:1px solid rgb(98, 98, 98);
+}QLineEdit:hover{
+	border: 1px solid #a3a3a3;
+}QLineEdit[frame = 'true']:focus {
+	padding: 2px;
+	border: 3px solid rgb(239, 176, 74);
+}QLineEdit[frame = 'false']:focus {
+	padding: 1px;
+	border: 1px solid rgb(239, 176, 74);
+}
+
+.QScrollArea {
+	background-color: rgba(241, 241, 241, 244);
+}QAbstractScrollArea QScrollBar:vertical {/*垂直滚动条样式*/
+	margin:1px 5px 1px 0px;
+	width: 10px;
+    background-color: transparent;   /* 空白区域的背景色*/
+}QAbstractScrollArea QScrollBar::handle:vertical {
+    border-radius: 5px;   /* 圆角 */
+    background: rgb(150, 150, 150);   /* 滑块的背景色 */
+}
+
+.QScrollBar::sub-line:vertical{/*隐藏滚动条按钮*/
+	background-color: transparent;
+}.QScrollBar::add-line:vertical{
+	background-color: transparent;
+}
+
+.QComboBox{/*下拉选择框*/
+	padding: 5px;
+}.QComboBox:hover{
+	color: black;
+	background-color: #efe8d1;
+}.QComboBox::drop-down{
+	width: 0px;
+	background-color: transparent; /*隐藏下拉按钮,但是占位置，不影响功能*/
+}
+
+.QDateEdit{ /*日期控件*/
+	border: 1px solid;
+	border-radius: 1px;
+	padding: 3px;
+	background-color: rgb(255, 255, 252);
+}.QDateEdit:hover{
+	border: 1px solid #a3a3a3;
+}.QDateEdit::drop-down{ /*日历控件按钮*/
+	padding-right: 10px;
+	width: 20px;
+	image: url(:/img/calendarBtn2);
+}.QCalendarWidget QWidget#qt_calendar_navigationbar{
+	color: white;
+	background-color: rgb(66, 66, 66);
+}.QCalendarWidget QToolButton{
+	color: white;
+	background-color: rgba(255, 255, 255, 0);
+}.QCalendarWidget QToolButton#qt_calendar_prevmonth{
+	qproperty-icon: url(:/img/preMonth);
+}.QCalendarWidget QToolButton#qt_calendar_nextmonth{
+	qproperty-icon: url(:/img/nextMonth);
+}.QCalendarWidget QSpinBox::up-button{
+	image: url(:/img/preYear);
+}.QCalendarWidget QSpinBox::up-button:hover{
+	padding-bottom: 3px;
+}.QCalendarWidget QSpinBox::down-button{
+	image: url(:/img/nextYear);
+}.QCalendarWidget QSpinBox::down-button:hover{
+	padding-bottom: 3px;
+}
+
+
+/**** dt:display type  ****/
+[dt = 'tips']{
+	font: 18px;
+	color: grey;
+	background-color: transparent;
+}
+[dt = 'mtc']{
+	font: 42px "阿里汉仪智能黑体";
+	color: black;
+	background-color: transparent;
+}
+[dt = 'title']{
+	font: 24px;
+	color: black;
+	background-color: transparent;
+}
+/**** ft:font type ****/
+[ft = 'chinese1']{
+    font: "包图小白体";
+}
+[ft = 'chinese2']{
+	font: "阿里汉仪智能黑体";
+}
+/**** fs:font size ****/
+[fs = 'larger']{
+	font: 36px;
+}
+[fs = 'large']{
+	font: 28px;
+}
+[fs = 'normal']{
+	font: 22px;
+}
+[fs = 'small']{
+	font: 18px;
+}
+[fs = 'smaller']{
+	font: 12px;
+}
+
+/**** bci:background color ****/
+[bc = 'white']{
+    color: black;
+	background: rgb(255, 255, 255);
+}
+[bc = 'transparent']{
+    color: black;
+	background-color: transparent;
+}
+[bc = 'red']{
+	color: #ffffff;
+    background-color: rgb(218, 121, 123);
+}
+[bc = 'grey']{
+	color: #000000;
+	background-color: rgb(209, 209, 209);
+}
+[bc = 'green']{
+    color: #ffffff;
+	background-color: #b0c257;
+}
+[bc = 'green2']{
+    color: #ffffff;
+	background-color: #1abc9c;
+}
+[bc = 'Turquoise']{
+	color: black;
+	background-color: rgb(117, 190, 207);
+}
+[bc = 'blue']{
+	color: #ffffff;
+	background-color: rgb(69, 112, 186);
+}
+[bc = 'purple']{
+	color: #bebebe;
+	background-color: #5d4b86;
+}
+[bc = 'orange']{
+	color: #969690;
+	background-color: #e6e69b;
+}
+[bc = 'blue2']{
+	color: rgb(255, 255, 255);
+	background-color: #7daad3;
+}
+[bc = 'yellow']{
+	color: black;
+	background-color: #fde895;
+}
+/**** border ****/
+[border = '3sp']{
+	border: 3px solid black;
+}
+[border = 'none']{
+	background:transparent;
+	border-width:0;
+	border-style:outset;
+}
+[border = 'r']{
+	border-radius: 50%;
+}
+/**** ico ****/
+[ico = 'search']{
+    qproperty-icon: url(:/img/searchBtn);
+}
+[ico = 'setting']{
+    qproperty-icon: url(:/img/settingBtn);
+}
+[ico = 'table']{
+    qproperty-icon: url(:/img/tableBtn);
+}

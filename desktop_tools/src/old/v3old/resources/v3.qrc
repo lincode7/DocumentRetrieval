@@ -1,0 +1,37 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="config">config.json</file>
+    </qresource>
+    <qresource prefix="img">
+        <file alias="icon">img/DR.png</file>
+        <file alias="searchBtn">img/filter.png</file>
+        <file alias="settingBtn">img/setting.png</file>
+        <file alias="tableBtn">img/table.png</file>
+        <file alias="calendarBtn">img/calendar.png</file>
+        <file alias="calendarBtn2">img/calendar2.png</file>
+        <file alias="preMonth">img/calendar_pre_month.png</file>
+        <file alias="nextMonth">img/calendar_next_month.png</file>
+        <file alias="preYear">img/calendar_pre_year.png</file>
+        <file alias="nextYear">img/calendar_next_year.png</file>
+    </qresource>
+    <qresource prefix="widget">
+        <file alias="MainWin">ui/UI_Filter_v3.ui</file>
+        <file alias="SearchWin">ui/search_widget.ui</file>
+        <file alias="InfoWin">ui/info_widget.ui</file>
+        <file alias="SettingWin">ui/UI_setting.ui</file>
+        <file alias="TableWin">ui/UI_table.ui</file>
+        <file alias="AdSearchWin">ui/advance_search_widget.ui</file>
+        <file alias="AllSearchWin">ui/allfield_search_widget.ui</file>
+    </qresource>
+    <qresource prefix="font">
+        <file>font/comic.ttf</file>
+        <file>font/consola.ttf</file>
+        <file>font/Dirnaith.ttf</file>
+        <file>font/Laden Dirnaith.ttf</file>
+        <file>font/包图小白体.ttf</file>
+        <file>font/摄图摩登小方体.ttf</file>
+    </qresource>
+    <qresource prefix="qss">
+        <file alias="stylesheet">qss/default.qss</file>
+    </qresource>
+</RCC>
