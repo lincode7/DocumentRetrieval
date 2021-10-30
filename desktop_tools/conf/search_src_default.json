@@ -1,17 +1,21 @@
 {
-  "name": "源名称",
-  "subject": "源默认学科，可多值",
-  "authority": "源域名 url",
-  "api": "源检索api url",
-  "method": "请求方式",
-  "params_type": "参数类型，params，data，json等",
-  "payload": {
-    "keyword": "检索关键字对应参数名",
-    "title": "检索标题对应参数名",
-    "author": "检索作者对应参数名",
-    "dateSt": "检索时间起始范围对应参数名@时间格式",
-    "dateEnd": "检索时间结束范围对应参数名@时间格式",
-    "dateRange": "检索时间范围对应参数名@时间格式"
+  "base": {
+    "type": "源类型",
+    "authority": "源域名 url",
+    "priority": "优先级"
+  },
+  "request": {
+    "api": "源检索api url",
+    "method": "请求方式",
+    "params_type": "参数类型，params，data，json等",
+    "payload": {
+      "keyword": "检索关键字对应参数名",
+      "title": "检索标题对应参数名",
+      "author": "检索作者对应参数名",
+      "dateSt": "检索时间起始范围对应参数名@时间格式",
+      "dateEnd": "检索时间结束范围对应参数名@时间格式",
+      "dateRange": "检索时间范围对应参数名@时间格式"
+    }
   },
   "analysis": {
     "type": "响应类型 html 或 json",

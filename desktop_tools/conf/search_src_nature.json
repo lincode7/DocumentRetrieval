@@ -1,4 +1,9 @@
 {
+  "base": {
+    "type": "nature",
+    "authority": "源域名 url",
+    "priority": "优先级"
+  },
   "name": "Nature",
   "authority": "https://www.nature.com",
   "api": "https://www.nature.com/search/ajax",
